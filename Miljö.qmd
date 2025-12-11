@@ -75,7 +75,7 @@ Kommunindexet för temat Miljökvalitet baseras på följande indikatorer:
 
 Indexet normaliseras så att alla kommuners värden placeras på en skala från 0 till 100, där 0 är sämst och 100 är bäst.
 
-Data är hämtat från @kolada som hänvisar vidare till @tillvaxtverket, @viss, @scb_statistikdatabasen och Länsstyrelserna.
+Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelserna.
 
 ```{r}
 #| fig-cap: ''

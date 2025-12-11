@@ -120,7 +120,7 @@ knitr::include_graphics("Figurer/avgift_avfall.svg")
 </p>
 ```
 
-De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta på över 25 kronor/kvadratmeter, de lägsta priserna finns i Uppsala och Östhammar på runt 15 respektive 18 kr/kvm.
+De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta på över 25 kronor/kvadratmeter, de lägsta priserna finns i Uppsala och Östhammar på runt 18 respektive 20 kr/kvm.
 
 ## Kostnad avfallshantering
 
