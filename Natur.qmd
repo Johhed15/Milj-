@@ -275,7 +275,7 @@ knitr::include_graphics("Figurer/eko_vatten_Vattendrag.svg")
 ```
 
 ```{=html}
-<p style="text-align:center;">
+<p style="text-align:left;">
   <a href="Figurer/eko_vatten_Vattendrag.svg" download="eko_vatten_Vattendrag.svg" 
      style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
       Ladda ner bilden
@@ -404,12 +404,11 @@ grundvattenniva()
 Källa: @sgu
 :::
 
-Trenden är för de flesta mätpunkterna är väldigt liten och väldigt nära 0, men mätningarna från "Station 73_138" i Enköping sticker ut med en skillnad på -0,31 meter per år för de totalt 26 mätningarna och Station 73_157 som har en ökning på 0,21 meter per år uppdelat på 11 mätningar mellan 1987-02-12 och 1995-06-06. Dessa mätningar och trender ska ses med försiktighet, det senaste värdet från en mätning ses genom att klicka på stationerna i figuren. 
-
+Trenden är för de flesta mätpunkterna är väldigt liten och väldigt nära 0, men mätningarna från "Station 73_138" i Enköping sticker ut med en skillnad på -0,31 meter per år för de totalt 26 mätningarna och Station 73_157 som har en ökning på 0,21 meter per år uppdelat på 11 mätningar mellan 1987-02-12 och 1995-06-06. Dessa mätningar och trender ska ses med försiktighet, det senaste värdet från en mätning ses genom att klicka på stationerna i figuren.
 
 # mer vatten ?
 
-https://www.smhi.se/forskning/modeller-och-data/s-hype https://www.smhi.se/data/sjoar-och-vattendrag/vattenwebb https://vattenwebb.smhi.se/modelregion/
+https://www.smhi.se/forskning/modeller-och-data/s-hype
 
 # Kalmark
 
@@ -444,4 +443,3 @@ För deklarerad areal för produktiv skogsmark så har Uppsala kommun störst yt
 Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så stor yta som den näst högsta kommunen, minst medelyta per bruksenhet hittas i Enköping kommun. Men undersöks istället medianbrukningsenheten så har Älvkarleby lägst värden vilket då tyder på en skev fördelning där någon eller några få ägare har väldigt stor yta i hektar per brukningsenhet. Medianytan har sjunkit något för de flesta kommunerna under perioden, den enda kommunen med ett högre värde 2024 jämfört med 2005 är Håbo.
 
 Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och störst i Uppsala kommun och antalet enheter är väldigt jämnt under perioden, men en tydlig ökning syns i Östhammar. Antalet ägare håller sig också väldigt stabilt under perioden, men en nedgång syns i Enköping och en lite uppgång i Östhammar.
-
