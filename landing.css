@@ -1,0 +1,172 @@
+/* =========================================================
+   landing.css – stil för den fristående startsidan (index.html)
+   ========================================================= */
+
+.landing {
+  /* Temavariabler för startsidan */
+  --hero-bg: #B81867;         /* bakgrundsfärg i hero-blocket */
+  --hero-fg: #fff;            /* textfärg i hero-blocket */
+  --maxw: 1100px;             /* max bredd på innehålls-wrap */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* =========================
+   HERO – stor toppsektion
+   ========================= */
+.landing .hero {
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+
+  /* Gör ytan längre ner:
+     - stor topp- och bottenpadding
+     - min-height mot viewporten
+     - centrerad vertikalt med flex  */
+  padding: clamp(3rem, 6vw, 6rem) 1.25rem clamp(6rem, 10vw, 10rem);
+  min-height: 62vh;                 /* höjden på blocket – justera efter smak */
+  display: flex;                    /* vertikal centrering */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* Liten justering på mindre skärmar så att blocket inte blir för dominerande */
+@media (max-width: 700px) {
+  .landing .hero {
+    min-height: 52vh;
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+}
+
+/* Titel i hero */
+.landing .hero h1 {
+  margin: 0 0 .6rem 0;
+  font-weight: 900;
+  /* lite större och mer elastiskt över olika skärmar */
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  letter-spacing: .2px;
+}
+
+/* Ingress i hero */
+.landing .hero p {
+  margin: 0 auto;
+  max-width: 60ch;                 /* läsbar radlängd */
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  opacity: .95;
+}
+
+/* CTA-knappar i hero */
+.landing .cta {
+  margin-top: 1.35rem;
+  display: inline-flex;
+  gap: .75rem;
+  flex-wrap: wrap;                 /* radbryt om det blir trångt */
+}
+
+/* Grundstil för knapparna (länkarna) */
+.landing .cta a {
+  text-decoration: none;
+  background: #fff;
+  color: #B81867;
+  padding: .7rem 1.05rem;
+  border-radius: 12px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+  display: inline-block;           /* större klickyta */
+}
+
+/* Hover/focus ger bättre affordance + tillgänglighet */
+.landing .cta a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.16);
+}
+.landing .cta a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+.landing .cta a:focus-visible {
+  outline: 3px solid rgba(255,255,255,.85);
+  outline-offset: 2px;
+}
+
+.cta-container {
+  display: flex;
+  align-items: center;      /* gör att de hamnar i samma höjd */
+  gap: 12px;                /* lite mellanrum mellan text och ruta */
+}
+
+/* =========================
+   HUVUD-INNEHÅLL
+   ========================= */
+.landing .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+/* Grid med kort */
+.landing .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Kortens look & feel */
+.landing .card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  padding: 1.1rem 1.25rem;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.landing .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.12);
+}
+
+/* Reducerad rörelse för de som föredrar det */
+@media (prefers-reduced-motion: reduce) {
+  .landing .cta a,
+  .landing .card {
+    transition: none;
+  }
+}
+
+
+
+
+.cta-container {
+  display: flex;
+  align-items: center;      /* gör att de hamnar i samma höjd */
+  gap: 12px;                /* lite mellanrum mellan text och ruta */
+}
+
+.cta-title {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.cta-box {
+  background-color: #f0f4f8; /* ljus bakgrund */
+  border: 2px solid #0078d4; /* valfri färg (t.ex. blå kant) */
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.cta-box a {
+  text-decoration: none;
+  color: #0078d4;
+  font-weight: 500;
+}
+
+.cta-box a:hover {
+  text-decoration: underline;
+}
+
+.cta-title {
+  display: flex;
+  align-items: center;
+}

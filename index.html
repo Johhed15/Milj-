@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <!-- TODO: Byt sidtitel till rapportens namn -->
+  <title>Start – energi_och_miljo</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- TODO: Länka till din globala sajt-CSS (byt filnamn/sökväg vid behov) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- TODO: Landningssidans extra-stil (kan tas bort om allt ligger i styles.css) -->
+  <link rel="stylesheet" href="landing.css">
+</head>
+
+<!-- TIP: body class används i CSS för att styra just landningssidan -->
+<body class="landing">
+
+  <!-- ================== HERO ==================
+       TODO: Ändra rubrik, ingress och knappar (text + mål-länkar).
+       Länkarna ska peka på genererade sidor, t.ex. inledning.html (från inledning.qmd)
+  ============================================ -->
+  <section class="hero">
+    <!-- TODO: Rapportnamn + år -->
+    <h1>Läget i Länet Rapport - Miljö 2025</h1>
+
+    <!-- TODO: Kort ingress/”pitch” för rapporten (1–2 meningar) -->
+    <p>Rapporten ger en övergripande bild av länets miljötillstånd, från länsstyrelsens bedömningar av miljökvalitetsmålen till kommunernas resultat inom miljökvalitet och hållbarhet. </p>
+  <!-- =============== KORT/KORTLISTA =================-->
+    <div class="cta">
+      <!-- TODO: Justera länkar/texter. Lägg till/ta bort knappar efter behov. -->
+    <h2 class="cta-title">Snabblänk</h2>
+      <div class="cta-links">
+      <a href="Miljö.html#kommunindex">Hoppa till kommunindex</a>
+    </div>
+  </section>
+
+  <!-- =============== KORT/KORTLISTA =================
+       TODO: Lägg till ett "card"-block per delkapitel/tema.
+       - h3: kort rubrik
+       - första p: kort beskrivande text
+       - länk: pekar till respektive undersida (t.ex. arbetsmarknaden.html)
+       Tips: duplicera <div class="card">…</div> för fler rutor.
+  ==================================================== -->
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- ====== KORT 1: Inledning ====== -->
+      <div class="card">
+        <!-- TODO: Delrubrik -->
+        <h3>Miljö</h3>
+        <!-- TODO: Kort beskrivning av vad läsaren hittar här -->
+        <p>En samlad genomgång av miljökvalitetsmålen, miljöindex och hållbarhetsindikatorer i länet.</p>
+        <!-- TODO: Länk till sidan (se till att filen genereras av Quarto) -->
+        <p><a href="Miljö.html">Öppna →</a></p>
+      </div>
+
+      <!-- ====== KORT 2: Avfall ====== -->
+      <div class="card">
+        <h3>Avfallsrapport</h3>
+        <p>En översikt över avfallsmängder, materialåtervinning och kommunernas kostnader för avfallshantering </p>
+        <p><a href="Avfall.html">Öppna →</a></p>
+      </div>
+      
+      <!-- ====== KORT 3: Natur ====== -->
+      <div class="card">
+        <h3>Naturrapport</h3>
+        <p>En sammanfattning av markanvändning, skyddad natur och status i länets sjöar och vattendrag</p>
+        <p><a href="Natur.html">Öppna →</a></p>
+      </div>
+      
+      <!-- ====== EXEMPEL PÅ FLER KORT ======
+      <div class="card">
+        <h3>Utbildning</h3>
+        <p>Gymnasiet, YH, högskola.</p>
+        <p><a href="utbildning.html">Öppna →</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Näringsliv</h3>
+        <p>Företagsstruktur & branscher.</p>
+        <p><a href="naringsliv.html">Öppna →</a></p>
+      </div>
+      ======================================= -->
+
+    </div>
+  </div>
+
+  <!-- ============== EXTRA TIPS =================
+    • Filnamn:
+      - Om du kör Quarto: inledning.qmd → inledning.html vid render.
+      - Säkerställ att länkarna ovan matchar de genererade .html-filerna.
+    • Navigation:
+      - Om du har en global navbar via _quarto.yml används den parallellt.
+    • Bilder i hero:
+      - Sätt bakgrundsbild via CSS i landing.css, t.ex.:
+        .landing .hero { background: url('img/hero.jpg') center/cover no-repeat; }
+    • Footers/loggor:
+      - Lägg längst ned innan </body> eller styra via CSS.
+  ============================================== -->
+
+</body>
+</html>
+

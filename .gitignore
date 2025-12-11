@@ -1,0 +1,22 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+/.quarto/
+
+# Stora filer
+*.gpkg  
+
+# Bilder / får ej laddas upp
+Figurer/
+Mediabank/
+Data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Quarto
+_site/
+ 

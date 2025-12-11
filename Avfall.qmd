@@ -1,0 +1,152 @@
+---
+title: "Avfall"
+lang: sv 
+bibliography: references.bib
+link-citations: true
+reference-section-title: "Källor"
+format: 
+  html:
+    self-contained: true
+    language: sv 
+    toc: true  # Innehållsförteckning
+    toc_float: 
+      collapsed: false  # Visa ToC utvidgad från start
+      smooth_scroll: true  # Mjuk scroll
+    toc-title: "Innehåll"  # Rubrik för ToC
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+editor: visual
+---
+
+```{r setup, include = FALSE, message=FALSE, warnings=FALSE}
+# använd paket(plus några extra som har testas)
+source("Script/install_load_packages.R")
+install_and_load()
+# Ställer in rätt typsnitt
+try(font_add_google("Source Sans Pro", "sourcesanspro"), silent = TRUE)
+font_add("Arial", "path/to/arial.ttf") # Specify the path if Arial is not system-default
+showtext_auto()
+
+source("Script/create_save_plots.R")
+source("Script/create_tables.R")
+```
+
+# Inledning
+
+inledning/sammanfattning
+
+```{r}
+#| fig-cap: "Miljö 8 Liljeröd"
+#| label: fig-Miljö_8_Liljeröd_RGB
+#| out.width: "50%"
+
+image_read("Mediabank/Miljö 8_Liljeröd_RGB.png") %>% 
+  image_ggplot(interpolate = TRUE)
+```
+
+# Avfallsmängder och materialåtervinning
+
+Data är hämtat från @kolada som hänvisar vidare till @avfallsverige.
+
+-   Materialåtervinning (%) visar andel av hushållsavfall som samlats in för materialåtervinning (inklusive biologisk behandling) av totalt insamlat hushållsavfall, multiplicerat med 100 för procent. Ingår även rejekt (insamlat men ej återvinningsbart). Hushållsavfall inkluderar mat- och restavfall, grovavfall, farligt avfall och producentansvar (förpackningar, tidningar, elavfall, batterier etc.).
+
+-   Grovavfall till deponi (kg/invånare) visar mängden grov- och farligt avfall som deponerats.
+
+-   Kommunalt avfall per invånare (kg/invånare). Justeringen tar hänsyn till fritidshus, gästnätter och pendling, för att ge en mer korrekt jämförelse mellan kommuner. Kommunalt avfall inkluderar mat- och restavfall, grovavfall, farligt avfall och jämförligt avfall från verksamheter samt producentansvar.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-avfall
+
+avfall()
+```
+
+Älvkarleby är den kommunen i länet som har högst andel kommunalt avfall som samlats in för återvinning över en stor del av perioden. Håbo och Knivsta visar en svag uppgående trend över tid som har varierat över åren, Enköping och Uppsala visar en högre andel mellan 2013 och 2016 än vad de har 2024. Det saknas data för flera av åren för Tierp och Östhammar, vilket gör det svårare att analysera trenderna, men Östhammar har lägst andel av kommunerna för samtliga år data finns tillgängligt.
+
+Angående avfall till deponi så har Tierp mycket högre kg/invånare än resterande kommuner och klickar man bort Tierp och Östhammar från grafen så syns det att Enköping, Heby, Håbo, Uppsala och Älvkarleby har en minskande trend, medan Knivsta har en ökande. Enköping och Heby har exakt samma värdet under perioden.
+
+Det totalt insamlade avfall per invånare visar en minskade trend för alla kommuner i länet utom Tierp och Östhammar. Håbo, Tierp och Enköping är de tre kommunerna med högst totalt insamlade avfall per invånare år 2024 medan Uppsala, Knivsta och Älvkarleby är de kommunerna med lägst nivåer 2024.
+
+# Avfall per kategori
+
+Data är hämtat från @kolada som hänvisar vidare till @avfallsverige via FTI och de nämner att i förekommande fall kompletterande uppgifter från kommunen avseende fastighetsnära insamling.
+
+Avfallshanteringen i kommunerna delas in i fyra huvudkategorier.
+
+-   Mat- och restavfall omfattar hushållsavfall, inklusive brännbart avfall och matavfall, samt jämförligt avfall från exempelvis affärer, kontor, industrier och restauranger.
+
+-   Förpackningar och returpapper består av insamlade förpackningar av papper, plast, glas och metall samt returpapper som omfattas av producentansvar.
+
+-   Farligt avfall inkluderar småkemikalier, färg, oljehaltigt avfall, impregnerat trä, asbest samt batterier och elavfall som exempelvis vitvaror, elektronik och lampor.
+
+-   Slutligen omfattar grovavfall till exempel trädgårdsavfall, utsorterat trä, övrigt brännbart, wellpapp, metallskrot, gips, planglas, kommunplast, deponirest samt övrigt grovavfall, från både hushåll och verksamhet. Däremot ska t.ex. inte byggavfall från snickeriföretaget, men många kommuner har problem att skilja på detta vilket gör att det kan ingå i data.
+
+Enligt @kolada har invånarantalet justerats för att ta hänsyn till fritidshus, gästnätter samt in- och utpendling. Detta gör att avfallsmängder i kommuner med mycket turism eller fritidshus speglas på ett mer korrekt sätt och blir jämförbara med andra kommuner.
+
+```{r}
+#| fig-cap: ""
+#| label: fig-avfall_kategori
+
+Avfall_kategoori()
+```
+
+Grovavfall dominerar i de flesta kommuner, medan mat- och restavfall är störst i Uppsala, Älvkarleby och Östhammar. Trenden över de senaste fem åren visar generellt minskningar, men Håbo och Knivsta har små ökningar för till exempel förpackningar och returer. Detta kan dock ses som positivt, eftersom mer material samlas in för återvinning istället för att gå till deponi eller förbränning om det hade varit restavfall.
+
+# Avgift för avfallshämtning
+
+@fig-avgift_avfall visar kostnaden för avfallshämtning i kronor per kvadratmeter inklusive moms under ett år för en typfastighet i kommunen. Typfastigheten utgörs av ett flerbostadshus med en boendeyta på 1 000 kvadratmeter.
+
+Inför år 2024 har en ny avfallsdefinition införts, och insamlingen sker via Avfall Sveriges statistik- och insamlingsverktyg Avfall Web. Den nya definitionen anger att avfallsmängden motsvarar hämtning en gång per vecka av ett 660-liters restavfallskärl och ett 140-liters matavfallskärl, med en antagen dragväg på 9 meter.
+
+Data är hämtat från @kolada som refererar till @nilsholgersson.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-avgift_avfall
+
+
+knitr::include_graphics("Figurer/avgift_avfall.svg")
+```
+
+```{=html}
+<p style="text-align:left;">
+  <a href="Figurer/avgift_avfall.svg" download="avgift_avfall.svg" 
+     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
+      Ladda ner bilden
+  </a>
+</p>
+```
+
+De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta på över 25 kronor/kvadratmeter, de lägsta priserna finns i Uppsala och Östhammar på runt 15 respektive 18 kr/kvm.
+
+## Kostnad avfallshantering
+
+@fig-kost_avfall visar nettokostnaden för avfallshantering per invånare i kommunen den 31 december. Dn beräknas som bruttokostnad minus interna intäkter och försäljning till andra kommuner och regioner, dividerat med antalet invånar. Med nettokostnad avses bruttokostnad minus bruttointäkter.
+
+Nettokostnaden omfattar produktion och distribution av avfallshantering och avser endast avfallshantering som bedrivs i förvaltningsform.
+
+Data är hämtat från @kolada som refererar till @scb_statistikdatabasen.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-kost_avfall
+
+
+knitr::include_graphics("Figurer/kost_avfall.svg")
+```
+
+```{=html}
+<p style="text-align:left;">
+  <a href="Figurer/kost_avfall.svg" download="kost_avfall.svg" 
+     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
+      Ladda ner bilden
+  </a>
+</p>
+```
+
+Den högsta bruttokostnaden för avfallshantering är i Östhammar följt av Håbo och Knivsta, det är stora skillnader mellan kommunerna, men eftersom data endast är för avfallshantering i förvaltningsform gör det att en del data kan saknas, Uppsala kommun har värdet 0 i grafen.
+
+Nettokostnaden i Tierp är negativ på runt -550kr/invånare, vilket då visar att intäkterna är större än kostnaderna, till skillnad mot Älvkarleby och Östhammar som har nettokostnader på 105 respektive 61 kr/invånare

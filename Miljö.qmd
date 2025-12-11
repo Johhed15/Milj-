@@ -1,0 +1,147 @@
+---
+title: "Miljö"
+lang: sv 
+bibliography: references.bib
+link-citations: true
+reference-section-title: "Källor"
+format: 
+  html:
+    self-contained: true
+    language: sv 
+    toc: true  # Innehållsförteckning
+    toc_float: 
+      collapsed: false  # Visa ToC utvidgad från start
+      smooth_scroll: true  # Mjuk scroll
+    toc-title: "Innehåll"  # Rubrik för ToC
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+editor: visual
+---
+
+```{r setup, include = FALSE, message=FALSE, warnings=FALSE}
+# använd paket(plus några extra som har testas)
+source("Script/install_load_packages.R")
+install_and_load()
+# Ställer in rätt typsnitt
+try(font_add_google("Source Sans Pro", "sourcesanspro"), silent = TRUE)
+font_add("Arial", "path/to/arial.ttf") # Specify the path if Arial is not system-default
+showtext_auto()
+
+source("Script/create_save_plots.R")
+source("Script/create_tables.R")
+```
+
+# Inledning
+
+inledning/sammanfattning
+
+```{r}
+#| fig-cap: "Miljö 2 Liljeröd"
+#| label: fig-Miljö_2_Liljeröd_RGB
+#| out.width: "50%"
+
+image_read("Mediabank/Miljö 2_Liljeröd_RGB.png") %>% 
+  image_ggplot(interpolate = TRUE)
+```
+
+# Länsstyrelsens uppföljning av kvalitetsmiljömål
+
+All information, data och sammanfattningar i detta avsnitt är hämtade direkt från Länsstyrelsens regionala årliga uppföljning för Uppsala län 2024 @rus2024uppsala. Tabellen nedan återger länsstyrelsens bedömningar och trender för samtliga miljökvalitetsmål i länet, precis som de presenteras i den ursprungliga rapporten.
+
+```{r}
+#| tbl-cap: ''
+#| label: tbl-rus_lansstyrelse
+rus_lansstyrelse()
+```
+
+Endast miljömålet om "Bara naturlig försurning" anses kunna uppnås till 2030 och endast målet om "Frisk luft" har en positiv trend samtidigt som 4 mål har bedömts ha en negativ trend.
+
+# Kommunindex
+
+## Miljökvalitetsindex
+
+Kommunindexet för temat Miljökvalitet baseras på följande indikatorer:
+
+-   Grönområde inom 200 meter från bostad, andel av tätortsbefolkning (%)
+
+-   Sjöar med god ekologisk status, andel (%)
+
+-   Vattendrag med god ekologisk status, andel (%)
+
+-   Grundvattenförekomster med god kemisk och kvantitativ status, andel (%)
+
+Indexet normaliseras så att alla kommuners värden placeras på en skala från 0 till 100, där 0 är sämst och 100 är bäst.
+
+Data är hämtat från @kolada som hänvisar vidare till @tillvaxtverket, @viss, @scb_statistikdatabasen och Länsstyrelserna.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-miljokval
+
+
+knitr::include_graphics("Figurer/miljoindex.svg")
+```
+
+```{=html}
+<p style="text-align:left;">
+  <a href="Figurer/miljoindex.svg" download="miljoindex.svg" 
+     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
+      Ladda ner bilden
+  </a>
+</p>
+```
+
+Endast tre kommuner i länet ligger mellan 25 och 75 percentilen för miljöindexet över alla Sveriges kommuner, och då är det precis att Tierp och Uppsala ligger över gränsen. Heby har högst indexvärde i länet och Östhammar har lägst, tätt följt av Knivsta.
+
+## Hållbarhetsindex
+
+Data är hämtat från @kolada som hänvisar till @tillvaxtverket beräkningar
+
+Kommunindex för miljömässig hållbarhet bygger på flera indikatorer som speglar kommunernas miljöarbete och resursanvändning. Det omfattar utsläpp av växthusgaser, kväveoxider och partiklar (PM2.5), energianvändning av icke-förnybara bränslen, andel förnybar fjärrvärmeproduktion, skyddad natur på land och i inlandsvatten, vattentäkter med skyddsområde samt hur mycket av det kommunala avfallet som samlas in och materialåtervinns. Alla nyckeltal normaliseras till en skala från 0 till 100, där 0 är sämst och 100 bäst.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-hallbar
+
+
+knitr::include_graphics("Figurer/hallbarhetsindex.svg")
+```
+
+```{=html}
+<p style="text-align:left;">
+  <a href="Figurer/hallbarhetsindex.svg" download="hallbarhetsindex.svg" 
+     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
+      Ladda ner bilden
+  </a>
+</p>
+```
+
+Enligt hållbarhetsindexet i @fig-hallbar ligger sex av länets åtta kommuner mellan den 25:e och 75:e percentilen bland landets kommuner. Uppsala, Tierp och Heby uppvisar de högsta indexvärdena, medan Östhammar, Älvkarleby och Håbo har de lägsta.
+
+Uppsala utmärker sig särskilt genom att tillhöra den bästa kvartilen, medan Östhammar återfinns i den sämsta kvartilen.
+
+# Riskområden
+
+Data är hämtat från @naturvardsverket2024.
+
+Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög risk för människor och miljö (riskklass 1 och 2), medan de resterande två tredjedelarna bedöms ha måttlig eller liten risk (riskklass 3 och 4). Länsstyrelserna bedömning bygger på föroreningens farlighet, spridningsförmåga och områdets känslighet, och inventeringen avslutades 2015 med fortsatt fokus på de mest prioriterade områdena, inklusive PFAS- och sedimentområden sedan 2023.
+
+-   Riskklass 1: Mycket stor risk, ca 1 100 objekt
+
+-   Riskklass 2: Stor risk, ca 8 500 objekt
+
+-   Riskklass 3: Måttlig risk, ca 11 500 objekt
+
+-   Riskklass 4: Liten risk, ca 6 000 objekt
+
+```{r}
+#| tbl-cap: ''
+#| label: tbl-riskomrade
+
+riskomraden()
+```
+
+I Uppsala län så finns det 71 områden i riskklass 1 och 319 i riskklass 2, jämförs länet mot resterande län så är det endast Skåne, Stockholm, Västernorrland och Västragötaland som har fler områden i riskklass 1. Endast Gotland har färrre områden i riskklass 4.

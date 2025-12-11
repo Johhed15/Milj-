@@ -1,0 +1,49 @@
+project:
+  type: website                 # Bygger en statisk webbplats
+  output-dir: _site             # Färdiga HTML-filer hamnar här (lägg _site i .gitignore)
+  render:
+    - "*.qmd"                   # Rendera alla .qmd
+    - "!index.qmd"              # ... utom index.qmd (vi använder en statisk index.html)
+  resources:                    # Filer som ska kopieras rakt av till _site/
+    - index.html                # Din handskrivna landningssida
+    - styles.css                # global CSS
+    - landing.css               # extra CSS för landningssidan
+    - Figurer/**                 # hela mappen images/ (byt namn om du använder "Figurer/")
+
+website:
+  title: ""                     # Titel i <title>-taggen och ev. navbar om du inte har logga
+  navbar:
+    background: primary         # Bootstrap-färg (primary/secondary/light/dark)
+    logo: Figurer/Region Uppsala_Logo_CMYK_Vit.png  # Sökväg till loggan
+    logo-alt: "Region Uppsala"  # <– STAVNING! (du hade 'ogo-alt')
+    logo-href: index.html       # Klick på loggan leder till startsidan
+    left:                       # Menylänkar till vänster
+      - text: "Start"
+        href: index.html
+      - text: "Miljö"
+        href: Miljö.qmd
+      - text: "Avfall"
+        href: Avfall.qmd
+      - text: "Natur"
+        href: Natur.qmd
+
+  search:
+    location: navbar            # Sökfält i navbaren
+    type: textbox               # Textfält (alternativt 'overlay')
+
+format:
+  html:
+    theme: cosmo                # Bootstrap-tema
+    css: styles.css             # Ladda global CSS (landing.css lägger du i index.html eller via resources)
+    toc: true                   # Visa innehållsförteckning
+    toc-location: right
+    lang: sv
+    number-sections: false
+    self-contained: false       # Snabbare builds; undvik gigantiska inbäddade HTML -> sätt som True om man ska mejla till någon som ett fristående html
+
+execute:
+  echo: false                   # Dölj kod som standard
+  warning: false
+  message: false
+
+editor: visual                  # Quarto Editor-läge i RStudio
