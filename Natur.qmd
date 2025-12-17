@@ -13,6 +13,7 @@ format:
       collapsed: false  # Visa ToC utvidgad från start
       smooth_scroll: true  # Mjuk scroll
     toc-title: "Innehåll"  # Rubrik för ToC
+    page-layout: full
 execute:
   echo: false
   warning: false
@@ -42,6 +43,7 @@ inledning/sammanfattning
 #| fig-cap: "Natur"
 #| label: fig-Natur
 #| out.width: "50%"
+#| fig-alt: "Dekorativ bild"
 
 image_read("Mediabank/Natur.png") %>% 
   image_ggplot(interpolate = TRUE)
@@ -66,7 +68,7 @@ Data är hämtad från @scb_statistikdatabasen.
 ```{r}
 #| fig-cap: ''
 #| label: fig-markanvandning
-
+#| fig-alt: "Figuren visar en karta över länet där varje kommuns markanvändningsandelar går att se, med fokus på andelen skogsmark."
 karta_skog()
 ```
 
@@ -75,6 +77,46 @@ Källa: SCB
 :::
 
 Enköping har lägst andel skogsmark i länet, men också länets högsta jordbruksmarsandel på 44,8%, Älvkarleby har länets högsta skogsmarksandel på 80,1%. Håbo har den högsta andel bebyggd och anlagd mark på 12%.
+
+
+## Produktiv skogsmarksareal
+
+Deklarerad produktiv skogsmarksareal (1 000 ha), medelinnehav och medianinnehav i hektar per brukningsenhet, antal brukningsenheter och ägare efter kommun. År 1999-2024 @skogsstyrelsen
+
+En brukningsenhet utgörs av den produktiva skogsmark inom en kommun som tillhör samma ägare. Det kan vara en eller flera ägare och eftersom det är möjligt att äga mark i flera kommuner kan inte antalet ägare summeras över flera kommuner upp till större geografiska områden.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-prod_skog
+#| fig-alt: "Figuren visar deklarerad areal, medelbrukningsenhet, medianbrukningsenhet, antal brukningsenheter och antal ägare av produktiv skogsmark för länets samtliga kommuner, mellan åren 2005 till 2024."
+
+prod_skog()
+```
+
+För deklarerad areal för produktiv skogsmark så har Uppsala kommun störst yta som håller sig stabil under perioden, minst yta i länet har Håbo. De flesta kommunerna har samma deklarerad areal under perioden och störst förändring ses i Enköping, Heby och Tierp, där all tre har en något ökande areal.
+
+Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så stor yta som den näst högsta kommunen, minst medelyta per bruksenhet hittas i Enköping kommun. Men undersöks istället medianbrukningsenheten så har Älvkarleby lägst värden vilket då tyder på en skev fördelning där någon eller några få ägare har väldigt stor yta i hektar per brukningsenhet. Medianytan har sjunkit något för de flesta kommunerna under perioden, den enda kommunen med ett högre värde 2024 jämfört med 2005 är Håbo.
+
+Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och störst i Uppsala kommun och antalet enheter är väldigt jämnt under perioden, men en tydlig ökning syns i Östhammar. Antalet ägare håller sig också väldigt stabilt under perioden, men en nedgång syns i Enköping och en lite uppgång i Östhammar.
+
+
+
+## Kalmark
+
+Data är hämtat från @skogsstyrelsen.
+
+Kalmark inkluderar alla avverkningar som gjorts de sista tre avverkningssäsongerna med ett inbördes avstånd av 20 meter.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-kalmark
+#| fig-alt: "Figuren visar medianen för sammanhängande kalmarksareal från 2013 till 2023, för samtliga län i Sverige."
+
+kalmark()
+```
+
+Sett till medianen för sammanhängande kalmarksareal så ligger länet nära mitten av länen i datat, trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms och Södermanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
+
 
 ## Ekologisk brukad åkermark
 
@@ -85,18 +127,21 @@ Data kommer från @kolada, med källhänvisning till @jordbruksverket.
 ```{r}
 #| fig-cap: ''
 #| label: fig-eko_mark
-
+#| fig-alt: "Figuren visar andelen ekologisk brukad åkermark för år 2024, för länets samtliga kommuner."
 
 knitr::include_graphics("Figurer/eko_mark.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/eko_mark.svg" download="eko_mark.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/eko_mark.svg" download>Som SVG</a>
+      <a href="Figurer/eko_mark.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Östhammar är den kommun i länet som har högst andel ekologisk brukad åkermark med nära 35 procent, Uppsala har näst högst andel runt 22-23 procent. Knivsta och Håbo har länets lägsta andelar där under 10 procent av den brukade åkermarken använder ekologiska produktionsmetoder.
@@ -110,18 +155,21 @@ Nyckeltalet visar andelen av det aktuella områdets totala landareal som består
 ```{r}
 #| fig-cap: ''
 #| label: fig-betesmark
-
+#| fig-alt: "Figuren visar andelen och totalen i hektar för betesmark för år 2024, för länets samtliga kommuner."
 
 knitr::include_graphics("Figurer/betesmark.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/betesmark.svg" download="betesmark.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/betesmark.svg" download>Som SVG</a>
+      <a href="Figurer/betesmark.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Uppsala är den kommun som har störst yta av betesmark i länet, på över 4500 hektar, men sett till andelar så är Knivsta högst, följt av Östhammar och Enköping. Älvkarleby har en väldigt liten yta som betesmark sett både i hektar och andel av landareal.
@@ -135,18 +183,21 @@ Nyckeltalet visar andelen av det aktuella områdets totala landareal som utgörs
 ```{r}
 #| fig-cap: ''
 #| label: fig-slatterang
-
+#| fig-alt: "Figuren visar andelen och totalen i hektar för slåtteräng för år 2024, för länets samtliga kommuner."
 
 knitr::include_graphics("Figurer/slatterang.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/slatterang.svg" download="slatterang.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/slatterang.svg" download>Som SVG</a>
+      <a href="Figurer/slatterang.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Heby har sett till total yta slåtteräng en mycket större yta än övriga kommuner i länet, men sett till andelar så är Älvkarleby den kommun som har högst värde. Håbo har den betydligt minsta ytan och andelen slåtteräng i länet och för Knivsta så saknas data och är därav bortplockad från grafen.
@@ -166,6 +217,7 @@ Data hämtat från @kolada som hänvisar vidar vidare till @scb_statistikdatabas
 ```{r}
 #| fig-cap: ""
 #| label: fig-skyddad_natur
+#| fig-alt: "Figuren visar andelen skyddad natur, uppdelat på inlandsvatten, natur och hav, för år 2024, för länets samtliga kommuner."
 
 andel_skyddadnatur()
 
@@ -179,6 +231,8 @@ Heby har den högsta andelen skyddat inlandsvatten på 58 %, medan Knivsta är k
 #| fig-cap: "Kungsangslilja"
 #| label: fig-Kungsangslilja
 #| out.width: "40%"
+#| fig-alt: "Dekorativ bild"
+
 
 image_read("Mediabank/Kungsangslilja.png") %>% 
   image_ggplot(interpolate = TRUE)
@@ -189,18 +243,21 @@ Invånares medelavstånd i km till närmaste skyddade natur. Indikatorn följer 
 ```{r}
 #| fig-cap: ''
 #| label: fig-avstand_skyddadnatur
-
+#| fig-alt: "Figuren visar medelavståndet i kilometer till skyddad natur för länets samtliga kommuner år 2024."
 
 knitr::include_graphics("Figurer/avstand_skyddadnatur.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/avstand_skyddadnatur.svg" download="avstand_skyddadnatur.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/avstand_skyddadnatur.svg" download>Som SVG</a>
+      <a href="Figurer/avstand_skyddadnatur.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Invånare i Enköping och Heby har längst avstånd till närmaste skyddade natur med ett medelvärde på 3 km, kortaste avstånden är i Knivsta på under 1,5 km. Kommuner som är inte är tätbefolkade får i större utsträckning ett längre medelavstånd.
@@ -218,7 +275,7 @@ Kartan @fig-karta_skydd visar länets skyddade områden, med data från @naturva
 ```{r}
 #| fig-cap: ''
 #| label: fig-karta_skydd
-
+#| fig-alt: "Figuren visar en karta över länets skyddade naturreservat, djur- ochväxtskyddsområden och kulturreservat."
 
 skydd_karta()
 ```
@@ -242,18 +299,21 @@ Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelse
 ```{r}
 #| fig-cap: ''
 #| label: fig-eko_vatten_Sjöar
-
+#| fig-alt: "Figuren visar andelen sjöar med god ekologisk status för länets samtliga kommuner år 2024."
 
 knitr::include_graphics("Figurer/eko_vatten_Sjöar.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/eko_vatten_Sjöar.svg" download="eko_vatten_Sjöar.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/eko_vatten_Sjöar.svg" download>Som SVG</a>
+      <a href="Figurer/eko_vatten_Sjöar.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Störst andel ekologiska sjöar finns i Heby, där över 45 % av alla sjöar klassades att ha god ekologisk status för den senaste cykeln. I Tierp, Uppsala och Östhammar är mellan 20 och 30 % av alla sjöar, medan endast 10 till 15 % av alla sjöar i Enköping och Håbo.
@@ -269,18 +329,21 @@ Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelse
 ```{r}
 #| fig-cap: ''
 #| label: fig-eko_vatten_Vattendrag
-
+#| fig-alt: "Figuren visar andelen vattendrag med god ekologisk status för länets samtliga kommuner år 2024."
 
 knitr::include_graphics("Figurer/eko_vatten_Vattendrag.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/eko_vatten_Vattendrag.svg" download="eko_vatten_Vattendrag.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/eko_vatten_Vattendrag.svg" download>Som SVG</a>
+      <a href="Figurer/eko_vatten_Vattendrag.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Endast fyra kommuner i länet har data för vattendrag i hänsyn till ekologisk status, Heby har även här den högsta andelen som klassas ha god ekologisk status på över 15 %. Östhammar är den kommun som har lägst andel av de fyra kommunerna på runt 3 %.
@@ -409,37 +472,3 @@ Trenden är för de flesta mätpunkterna är väldigt liten och väldigt nära 0
 # mer vatten ?
 
 https://www.smhi.se/forskning/modeller-och-data/s-hype
-
-# Kalmark
-
-Data är hämtat från @skogsstyrelsen.
-
-Kalmark inkluderar alla avverkningar som gjorts de sista tre avverkningssäsongerna med ett inbördes avstånd av 20 meter.
-
-```{r}
-#| fig-cap: ''
-#| label: fig-kalmark
-
-kalmark()
-```
-
-Sett till medianen för sammanhängande kalmarksareal så ligger länet nära mitten av länen i datat, trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms och Södermanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
-
-# Produktiv skogsmarksareal
-
-Deklarerad produktiv skogsmarksareal (1 000 ha), medelinnehav och medianinnehav i hektar per brukningsenhet, antal brukningsenheter och ägare efter kommun. År 1999-2024 @skogsstyrelsen
-
-En brukningsenhet utgörs av den produktiva skogsmark inom en kommun som tillhör samma ägare. Det kan vara en eller flera ägare och eftersom det är möjligt att äga mark i flera kommuner kan inte antalet ägare summeras över flera kommuner upp till större geografiska områden.
-
-```{r}
-#| fig-cap: ''
-#| label: fig-prod_skog
-
-prod_skog()
-```
-
-För deklarerad areal för produktiv skogsmark så har Uppsala kommun störst yta som håller sig stabil under perioden, minst yta i länet har Håbo. De flesta kommunerna har samma deklarerad areal under perioden och störst förändring ses i Enköping, Heby och Tierp, där all tre har en något ökande areal.
-
-Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så stor yta som den näst högsta kommunen, minst medelyta per bruksenhet hittas i Enköping kommun. Men undersöks istället medianbrukningsenheten så har Älvkarleby lägst värden vilket då tyder på en skev fördelning där någon eller några få ägare har väldigt stor yta i hektar per brukningsenhet. Medianytan har sjunkit något för de flesta kommunerna under perioden, den enda kommunen med ett högre värde 2024 jämfört med 2005 är Håbo.
-
-Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och störst i Uppsala kommun och antalet enheter är väldigt jämnt under perioden, men en tydlig ökning syns i Östhammar. Antalet ägare håller sig också väldigt stabilt under perioden, men en nedgång syns i Enköping och en lite uppgång i Östhammar.

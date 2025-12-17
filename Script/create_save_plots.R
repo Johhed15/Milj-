@@ -289,6 +289,7 @@ avfall_avgift <- function(){
   p
   # sparar som svg
   ggsave('Figurer/avgift_avfall.svg',plot = p,device = "svg", width = 7, height = 5)
+  ggsave('Figurer/avgift_avfall.png',plot = p,device = "png", width = 7, height = 5, dpi=96) # png
 }
 
 avfall_kostnad <- function(){
@@ -313,6 +314,8 @@ avfall_kostnad <- function(){
   p
   # sparar som svg
   ggsave('Figurer/kost_avfall.svg',plot = p,device = "svg", width = 7, height = 8)
+  
+  ggsave('Figurer/kost_avfall.png',plot = p,device = "png", width = 7, height = 8, dpi =96)
 }
 
 
@@ -379,6 +382,8 @@ miljo_index <- function(){
   p
   # sparar som svg
   ggsave('Figurer/miljoindex.svg',plot = p,device = "svg", width = 7, height = 7)
+  
+  ggsave('Figurer/miljoindex.png',plot = p,device = "png", width = 7, height = 8, dpi =96)
 }
 
 hallbarhetsindex <- function(){
@@ -439,6 +444,9 @@ hallbarhetsindex <- function(){
   p
   # sparar som svg
   ggsave('Figurer/hallbarhetsindex.svg',plot = p,device = "svg", width = 7, height = 7)
+  
+  
+  ggsave('Figurer/hallbarhetsindex.png',plot = p,device = "png", width = 7, height = 7, dpi =96)
 }
 
 
@@ -754,6 +762,9 @@ avstand_skyddadnatur <- function(){
   # sparar som svg
   ggsave('Figurer/avstand_skyddadnatur.svg',plot = p,device = "svg", width = 7, height = 6)
   
+  
+  ggsave('Figurer/avstand_skyddadnatur.png',plot = p,device = "png", width = 7, height = 6, dpi =96)
+  
 }
 
 # Ekologisk mark
@@ -780,7 +791,8 @@ ekomark <- function(){
   # sparar som svg
   ggsave('Figurer/eko_mark.svg',plot = p,device = "svg", width = 7, height = 6)
   
-    
+  
+  ggsave('Figurer/eko_mark.png',plot = p,device = "png", width = 7, height = 6, dpi =96)
 }
 
 # betesmark
@@ -809,6 +821,7 @@ betesmark <- function(){
   
   
   
+  ggsave('Figurer/betesmark.png',plot = p,device = "png", width = 7, height = 8, dpi =96)
   
 }
 
@@ -837,6 +850,8 @@ slatt_mark <- function(){
   p
   # sparar som svg
   ggsave('Figurer/slatterang.svg',plot = p,device = "svg", width = 7, height = 8)
+  
+  ggsave('Figurer/slatterang.png',plot = p,device = "png", width = 7, height = 8, dpi =96)
 }
 
 
@@ -964,6 +979,11 @@ eko_vatten <- function(){
   text <- str_split(t, " ")[[1]][1]
   ggsave(paste0('Figurer/eko_vatten_',text
                 ,'.svg'),plot = p,device = "svg", width = 7, height = 6)
+  
+  
+  ggsave(paste0('Figurer/eko_vatten_',text
+                ,'.png'),plot = p,device = "png", width = 7, height = 6, dpi=96)
+  
   }
   
   

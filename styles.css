@@ -1,6 +1,6 @@
 /* ==== Tema-variabler (behåll gärna) ==== */
 :root{
-  --accent:#8e0059;
+  --accent:#B81867;
   --accent-2:#a61c6e;
   --text:#1f1f1f;
   --muted:#666;
@@ -8,6 +8,8 @@
   --bg-soft:#f3dce8;
   --border:#e6e6e6;
   --maxw:1200px;
+  
+  --contentw:1100px;
 }
 
 /* Bas */
@@ -42,12 +44,10 @@ body{
   filter:invert(1) grayscale(1); /* gör hamburgaren vit */
 }
 
-/* Begränsa maxbredd på innehåll */
-.quarto-container, .page-columns{
-  max-width: var(--maxw);
-  margin-left:auto; margin-right:auto;
+/* Låt själva Quarto-grid fylla bredden (ingen smal container) */
+.quarto-container{
+  max-width: 100%;
 }
-
 /* ==== SIDEBAR (vänster, Quarto) ==== */
 #quarto-sidebar{
   background:var(--bg-soft);
@@ -124,3 +124,59 @@ pre{
 @media (max-width: 992px){
   .page-columns .content{ padding:20px 18px; border-radius:10px; }
 }
+
+
+
+
+/* Container för nedladdningsknappen */
+.download-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Själva knappen */
+.download-btn {
+  background-color: #0066CC;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+
+/* Menyn (dold som standard) */
+.download-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+/* Länkar i menyn */
+.download-menu a {
+  display: block;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Hover-effekt på länkar */
+.download-menu a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Visa meny vid hover */
+.download-dropdown:hover .download-menu {
+  display: block;
+}
+
+

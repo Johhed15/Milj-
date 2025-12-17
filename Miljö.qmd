@@ -42,6 +42,7 @@ inledning/sammanfattning
 #| fig-cap: "Miljö 2 Liljeröd"
 #| label: fig-Miljö_2_Liljeröd_RGB
 #| out.width: "50%"
+#| fig-alt: "Dekorativ bild"
 
 image_read("Mediabank/Miljö 2_Liljeröd_RGB.png") %>% 
   image_ggplot(interpolate = TRUE)
@@ -80,18 +81,22 @@ Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelse
 ```{r}
 #| fig-cap: ''
 #| label: fig-miljokval
+#| fig-alt: "Figuren visar ett miljöindex för 2024 där varje kommun i länet visas, 25e och 75e percentilerna för samtliga kommuner i Sverige är markerade som jämförelse."
 
 
 knitr::include_graphics("Figurer/miljoindex.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/miljoindex.svg" download="miljoindex.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/miljoindex.svg" download>Som SVG</a>
+      <a href="Figurer/miljoindex.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Endast tre kommuner i länet ligger mellan 25 och 75 percentilen för miljöindexet över alla Sveriges kommuner, och då är det precis att Tierp och Uppsala ligger över gränsen. Heby har högst indexvärde i länet och Östhammar har lägst, tätt följt av Knivsta.
@@ -105,18 +110,21 @@ Kommunindex för miljömässig hållbarhet bygger på flera indikatorer som speg
 ```{r}
 #| fig-cap: ''
 #| label: fig-hallbar
-
+#| fig-alt: "Figuren visar ett hållbarhetsindex för 2024 där varje kommun i länet visas, 25e och 75e percentilerna för samtliga kommuner i Sverige är markerade som jämförelse."
 
 knitr::include_graphics("Figurer/hallbarhetsindex.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/hallbarhetsindex.svg" download="hallbarhetsindex.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/hallbarhetsindex.svg" download>Som SVG</a>
+      <a href="Figurer/hallbarhetsindex.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Enligt hållbarhetsindexet i @fig-hallbar ligger sex av länets åtta kommuner mellan den 25:e och 75:e percentilen bland landets kommuner. Uppsala, Tierp och Heby uppvisar de högsta indexvärdena, medan Östhammar, Älvkarleby och Håbo har de lägsta.

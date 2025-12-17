@@ -13,6 +13,7 @@ format:
       collapsed: false  # Visa ToC utvidgad från start
       smooth_scroll: true  # Mjuk scroll
     toc-title: "Innehåll"  # Rubrik för ToC
+    page-layout: full
 execute:
   echo: false
   warning: false
@@ -42,6 +43,7 @@ inledning/sammanfattning
 #| fig-cap: "Miljö 8 Liljeröd"
 #| label: fig-Miljö_8_Liljeröd_RGB
 #| out.width: "50%"
+#| fig-alt: "Dekorativ bild"
 
 image_read("Mediabank/Miljö 8_Liljeröd_RGB.png") %>% 
   image_ggplot(interpolate = TRUE)
@@ -58,8 +60,9 @@ Data är hämtat från @kolada som hänvisar vidare till @avfallsverige.
 -   Kommunalt avfall per invånare (kg/invånare). Justeringen tar hänsyn till fritidshus, gästnätter och pendling, för att ge en mer korrekt jämförelse mellan kommuner. Kommunalt avfall inkluderar mat- och restavfall, grovavfall, farligt avfall och jämförligt avfall från verksamheter samt producentansvar.
 
 ```{r}
-#| fig-cap: ""
+#| fig-cap: ''
 #| label: fig-avfall
+#| fig-alt: "Figuren visar andelen kommunalt avfall som samlats in för materialåtervinning,avfall till deponi i klg/invånare och totalt insamlat avfall i kg/invånare för varje kommun i länet, mellan 2011 och 2024"
 
 avfall()
 ```
@@ -87,8 +90,9 @@ Avfallshanteringen i kommunerna delas in i fyra huvudkategorier.
 Enligt @kolada har invånarantalet justerats för att ta hänsyn till fritidshus, gästnätter samt in- och utpendling. Detta gör att avfallsmängder i kommuner med mycket turism eller fritidshus speglas på ett mer korrekt sätt och blir jämförbara med andra kommuner.
 
 ```{r}
-#| fig-cap: ""
+#| fig-cap: ''
 #| label: fig-avfall_kategori
+#| fig-alt: "Figuren visar insamlat avfall i kg/invånare uppdelat på kategorierna: Farligt avfall, Förpackningar och returpapper, Grovavfall och Mat- och restavfall, detta för varje kommun i länet och för perioden 2012 till 2024"
 
 Avfall_kategoori()
 ```
@@ -106,18 +110,21 @@ Data är hämtat från @kolada som refererar till @nilsholgersson.
 ```{r}
 #| fig-cap: ''
 #| label: fig-avgift_avfall
-
+#| fig-alt: "Figuren visar avgiften för avfallshantering för år 2025 för kommunerna i länet, enheten är kronor per kvadratmeter."
 
 knitr::include_graphics("Figurer/avgift_avfall.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/avgift_avfall.svg" download="avgift_avfall.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/avgift_avfall.svg" download>Som SVG</a>
+      <a href="Figurer/avgift_avfall.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta på över 25 kronor/kvadratmeter, de lägsta priserna finns i Uppsala och Östhammar på runt 18 respektive 20 kr/kvm.
@@ -133,18 +140,21 @@ Data är hämtat från @kolada som refererar till @scb_statistikdatabasen.
 ```{r}
 #| fig-cap: ''
 #| label: fig-kost_avfall
-
+#| fig-alt: "Figuren visar kostnaden och nettokostnaden för avfallshantering för år 2024 för kommunerna i länet, enheten är kronor per invånare."
 
 knitr::include_graphics("Figurer/kost_avfall.svg")
 ```
 
 ```{=html}
-<p style="text-align:left;">
-  <a href="Figurer/kost_avfall.svg" download="kost_avfall.svg" 
-     style="background-color:#007ACC; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">
-      Ladda ner bilden
-  </a>
-</p>
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/kost_avfall.svg" download>Som SVG</a>
+      <a href="Figurer/kost_avfall.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
 ```
 
 Den högsta bruttokostnaden för avfallshantering är i Östhammar följt av Håbo och Knivsta, det är stora skillnader mellan kommunerna, men eftersom data endast är för avfallshantering i förvaltningsform gör det att en del data kan saknas, Uppsala kommun har värdet 0 i grafen.
