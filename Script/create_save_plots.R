@@ -45,7 +45,7 @@ avfall <- function(){
   names(y_titles) <- titles
   
   # Bygg plotly-objekt
-  fig <- plot_ly( height = 700)
+  fig <- plot_ly()
   
   # loop över alla variabler och kommuner
   for (title in titles) {
@@ -95,7 +95,7 @@ avfall <- function(){
   #  Layout
   fig <- fig %>%
     layout(font = list(family = "sourcesanspro", size=18),
-           margin = list(t = 120),
+           margin = list(t = 120,b=60),
            title = list(text = paste("<b>",titles[1],"<b>"), y = 0.95, x = 0.55),
            xaxis = list(title = "", tickangle = -45),
            yaxis = list(title = "<b>Andel (%)<b>", 
@@ -135,7 +135,7 @@ avfall <- function(){
     ),
     displaylogo = FALSE)   # remove plotly logo/link
   
-  fig
+  return(fig)
   
 }
 
@@ -180,7 +180,7 @@ Avfall_kategoori <- function(){
   
   df <- df %>% arrange(municipality, title_short, year)
   
-  fig <- plot_ly(height = 600)
+  fig <- plot_ly()
   
   region <-  sort(unique(df$municipality))
   
@@ -229,10 +229,11 @@ Avfall_kategoori <- function(){
       xaxis = list(title = "", tickmode = "linear", tickangle = -45),
       yaxis = list(title = "<b>Kg/invånare<b>"),
       showlegend = TRUE,
+      margin = list(t = 120,b=100),
       legend = list(
         orientation = "h",   # horisontell legend
         x = 0.5,            # centrerad
-        y = -0.2,           # under grafen
+        y = -0.25,           # under grafen
         xanchor = "center",
         yanchor = "bottom",
         font = list(size = 14)
@@ -249,7 +250,7 @@ Avfall_kategoori <- function(){
       annotations = list(
         text = "Källa: Kolada och Avfall Sverige",
         x = 0,
-        y = -0.13,
+        y = -0.15,
         xref = "paper",
         yref = "paper",
         xanchor = "left",
@@ -263,7 +264,7 @@ Avfall_kategoori <- function(){
       displaylogo = FALSE
     )
   
-  fig
+  return(fig)
   
 }
   
@@ -1110,7 +1111,7 @@ prod_skog <- function(){
   n_region <- length(unique(df$Kommun))
   
   # Bygg plotly-objekt
-  fig <- plot_ly( height = 700)
+  fig <- plot_ly()
   
   # loop över alla variabler och kommuner
   for (title in titles) {
@@ -1200,7 +1201,7 @@ prod_skog <- function(){
     ),
     displaylogo = FALSE)   # remove plotly logo/link
   
-  fig
+  return(fig)
   
 }
 
@@ -1478,6 +1479,7 @@ grundvatten <- function(){
   
 }
 
+# Används ej - ej klar
 grundvatten_test <- function(){
   
   # Läser in data
@@ -1485,19 +1487,19 @@ grundvatten_test <- function(){
     rename('nationellt_provplatsid' = properties.nationellt_provplatsid) %>% 
     filter(properties.provtyp=='grundvatten')
   
-  df <- df %>% arrange(properties.inlamningsdat)
+  df_res <- df_res %>% arrange(properties.inlamningsdat)
   
-  df <- df %>% mutate(properties.provtagningsdat = as.Date(properties.provtagningsdat),
+  df_res <- df_res %>% mutate(properties.provtagningsdat = as.Date(properties.provtagningsdat),
                       properties.inlamningsdat = as.Date(properties.inlamningsdat))
   
   # Skapar plot
   fig <- plot_ly()
   
   # Antal tester
-  params <- sort(unique(sd_ts$data()$properties.param))
+  params <- sort(unique(df_res$properties.param))
   
   # Enhet per test
-  param_units <- sd_ts$data() %>%
+  param_units <- df_res %>%
     group_by(properties.param) %>%
     summarise(unit = first(na.omit(properties.enhet))) %>%
     ungroup()
@@ -1513,7 +1515,7 @@ grundvatten_test <- function(){
     # filtrera gemensam data och lägg till trace
     fig <- fig %>%
       add_trace(
-        data = sd_ts$data() %>% filter(properties.param == p),
+        data =df_res %>% filter(properties.param == p),
         x = ~properties.inlamningsdat,
         y = ~properties.matvardetal,
         type = "scatter",

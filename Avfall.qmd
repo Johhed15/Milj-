@@ -60,9 +60,10 @@ Data är hämtat från @kolada som hänvisar vidare till @avfallsverige.
 -   Kommunalt avfall per invånare (kg/invånare). Justeringen tar hänsyn till fritidshus, gästnätter och pendling, för att ge en mer korrekt jämförelse mellan kommuner. Kommunalt avfall inkluderar mat- och restavfall, grovavfall, farligt avfall och jämförligt avfall från verksamheter samt producentansvar.
 
 ```{r}
-#| fig-cap: ''
+#| fig-cap: ' '
 #| label: fig-avfall
-#| fig-alt: "Figuren visar andelen kommunalt avfall som samlats in för materialåtervinning,avfall till deponi i klg/invånare och totalt insamlat avfall i kg/invånare för varje kommun i länet, mellan 2011 och 2024"
+#| fig-height: 8
+#| fig-alt: "Figuren visar andelen kommunalt avfall som samlats in för materialåtervinning, avfall till deponi i klg/invånare och totalt insamlat avfall i kg/invånare för varje kommun i länet, mellan 2011 och 2024."
 
 avfall()
 ```
@@ -90,9 +91,10 @@ Avfallshanteringen i kommunerna delas in i fyra huvudkategorier.
 Enligt @kolada har invånarantalet justerats för att ta hänsyn till fritidshus, gästnätter samt in- och utpendling. Detta gör att avfallsmängder i kommuner med mycket turism eller fritidshus speglas på ett mer korrekt sätt och blir jämförbara med andra kommuner.
 
 ```{r}
-#| fig-cap: ''
-#| label: fig-avfall_kategori
-#| fig-alt: "Figuren visar insamlat avfall i kg/invånare uppdelat på kategorierna: Farligt avfall, Förpackningar och returpapper, Grovavfall och Mat- och restavfall, detta för varje kommun i länet och för perioden 2012 till 2024"
+#| fig-cap: ' '
+#| label: fig-avfallkategori
+#| fig-height: 8
+#| fig-alt: "Figuren visar insamlat avfall i kg/invånare uppdelat på kategorierna: Farligt avfall, Förpackningar och returpapper, Grovavfall och Mat- och restavfall, detta för varje kommun i länet och för perioden 2012 till 2024."
 
 Avfall_kategoori()
 ```
@@ -108,7 +110,7 @@ Inför år 2024 har en ny avfallsdefinition införts, och insamlingen sker via A
 Data är hämtat från @kolada som refererar till @nilsholgersson.
 
 ```{r}
-#| fig-cap: ''
+#| fig-cap: ' '
 #| label: fig-avgift_avfall
 #| fig-alt: "Figuren visar avgiften för avfallshantering för år 2025 för kommunerna i länet, enheten är kronor per kvadratmeter."
 
@@ -131,7 +133,7 @@ De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta p
 
 ## Kostnad avfallshantering
 
-@fig-kost_avfall visar nettokostnaden för avfallshantering per invånare i kommunen den 31 december. Dn beräknas som bruttokostnad minus interna intäkter och försäljning till andra kommuner och regioner, dividerat med antalet invånar. Med nettokostnad avses bruttokostnad minus bruttointäkter.
+@fig-kost_avfall visar nettokostnaden för avfallshantering per invånare i kommunen den 31 december. Den beräknas som bruttokostnad minus interna intäkter och försäljning till andra kommuner och regioner, dividerat med antalet invånar. Med nettokostnad avses bruttokostnad minus bruttointäkter.
 
 Nettokostnaden omfattar produktion och distribution av avfallshantering och avser endast avfallshantering som bedrivs i förvaltningsform.
 

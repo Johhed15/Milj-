@@ -86,8 +86,9 @@ Deklarerad produktiv skogsmarksareal (1 000 ha), medelinnehav och medianinnehav 
 En brukningsenhet utgörs av den produktiva skogsmark inom en kommun som tillhör samma ägare. Det kan vara en eller flera ägare och eftersom det är möjligt att äga mark i flera kommuner kan inte antalet ägare summeras över flera kommuner upp till större geografiska områden.
 
 ```{r}
-#| fig-cap: ''
-#| label: fig-prod_skog
+#| fig-cap: ' '
+#| label: fig-prodskog
+#| fig-height: 8
 #| fig-alt: "Figuren visar deklarerad areal, medelbrukningsenhet, medianbrukningsenhet, antal brukningsenheter och antal ägare av produktiv skogsmark för länets samtliga kommuner, mellan åren 2005 till 2024."
 
 prod_skog()
@@ -108,7 +109,7 @@ Data är hämtat från @skogsstyrelsen.
 Kalmark inkluderar alla avverkningar som gjorts de sista tre avverkningssäsongerna med ett inbördes avstånd av 20 meter.
 
 ```{r}
-#| fig-cap: ''
+#| fig-cap: ' '
 #| label: fig-kalmark
 #| fig-alt: "Figuren visar medianen för sammanhängande kalmarksareal från 2013 till 2023, för samtliga län i Sverige."
 
