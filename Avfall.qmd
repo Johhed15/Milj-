@@ -51,13 +51,15 @@ image_read("Mediabank/Miljö 8_Liljeröd_RGB.png") %>%
 
 # Avfallsmängder och materialåtervinning
 
-Data är hämtat från @kolada som hänvisar vidare till @avfallsverige.
+Detta avsnitt beskriver hur mycket avfall som uppstår i kommunerna i länet, hur stor andel som materialåtervinns och hur mycket avfallet som går till deponi. Syftet är att ge en samlad bild av både avfallsmängder och hur effektivt avfallet tas om hand.
 
 -   Materialåtervinning (%) visar andel av hushållsavfall som samlats in för materialåtervinning (inklusive biologisk behandling) av totalt insamlat hushållsavfall, multiplicerat med 100 för procent. Ingår även rejekt (insamlat men ej återvinningsbart). Hushållsavfall inkluderar mat- och restavfall, grovavfall, farligt avfall och producentansvar (förpackningar, tidningar, elavfall, batterier etc.).
 
 -   Grovavfall till deponi (kg/invånare) visar mängden grov- och farligt avfall som deponerats.
 
 -   Kommunalt avfall per invånare (kg/invånare). Justeringen tar hänsyn till fritidshus, gästnätter och pendling, för att ge en mer korrekt jämförelse mellan kommuner. Kommunalt avfall inkluderar mat- och restavfall, grovavfall, farligt avfall och jämförligt avfall från verksamheter samt producentansvar.
+
+Data är hämtat från @kolada som hänvisar vidare till @avfallsverige.
 
 ```{r}
 #| fig-cap: ' '
@@ -76,7 +78,7 @@ Det totalt insamlade avfall per invånare visar en minskade trend för alla komm
 
 # Avfall per kategori
 
-Data är hämtat från @kolada som hänvisar vidare till @avfallsverige via FTI och de nämner att i förekommande fall kompletterande uppgifter från kommunen avseende fastighetsnära insamling.
+I detta delkapitel visas hur det kommunala avfallet fördelar sig mellan olika avfallskategorier, till exempel mat- och restavfall, förpackningar, farligt avfall och grovavfall. Fördelningen ger en mer detaljerad bild av vilken typ av avfall som dominerar i respektive kommun.
 
 Avfallshanteringen i kommunerna delas in i fyra huvudkategorier.
 
@@ -87,6 +89,8 @@ Avfallshanteringen i kommunerna delas in i fyra huvudkategorier.
 -   Farligt avfall inkluderar småkemikalier, färg, oljehaltigt avfall, impregnerat trä, asbest samt batterier och elavfall som exempelvis vitvaror, elektronik och lampor.
 
 -   Slutligen omfattar grovavfall till exempel trädgårdsavfall, utsorterat trä, övrigt brännbart, wellpapp, metallskrot, gips, planglas, kommunplast, deponirest samt övrigt grovavfall, från både hushåll och verksamhet. Däremot ska t.ex. inte byggavfall från snickeriföretaget, men många kommuner har problem att skilja på detta vilket gör att det kan ingå i data.
+
+Data är hämtat från @kolada som hänvisar vidare till @avfallsverige via FTI och de nämner att i förekommande fall kompletterande uppgifter från kommunen avseende fastighetsnära insamling.
 
 Enligt @kolada har invånarantalet justerats för att ta hänsyn till fritidshus, gästnätter samt in- och utpendling. Detta gör att avfallsmängder i kommuner med mycket turism eller fritidshus speglas på ett mer korrekt sätt och blir jämförbara med andra kommuner.
 
@@ -133,7 +137,7 @@ De högsta avgifterna för avfallshämtning i länet finns i Håbo och Knivsta p
 
 ## Kostnad avfallshantering
 
-@fig-kost_avfall visar nettokostnaden för avfallshantering per invånare i kommunen den 31 december. Den beräknas som bruttokostnad minus interna intäkter och försäljning till andra kommuner och regioner, dividerat med antalet invånar. Med nettokostnad avses bruttokostnad minus bruttointäkter.
+@fig-kost_avfall visar nettokostnaden för avfallshantering per invånare i kommunen den 31 december. Den beräknas som bruttokostnad minus interna intäkter och försäljning till andra kommuner och regioner, dividerat med antalet invånare. Med nettokostnad avses bruttokostnad minus bruttointäkter.
 
 Nettokostnaden omfattar produktion och distribution av avfallshantering och avser endast avfallshantering som bedrivs i förvaltningsform.
 

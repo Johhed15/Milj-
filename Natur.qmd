@@ -78,12 +78,15 @@ Källa: SCB
 
 Enköping har lägst andel skogsmark i länet, men också länets högsta jordbruksmarsandel på 44,8%, Älvkarleby har länets högsta skogsmarksandel på 80,1%. Håbo har den högsta andel bebyggd och anlagd mark på 12%.
 
-
 ## Produktiv skogsmarksareal
 
-Deklarerad produktiv skogsmarksareal (1 000 ha), medelinnehav och medianinnehav i hektar per brukningsenhet, antal brukningsenheter och ägare efter kommun. År 1999-2024 @skogsstyrelsen
+Detta avsnitt beskriver hur den produktiva skogsmarken i länet är fördelad mellan kommunerna och hur ägandestrukturen ser ut. Här redovisas både den totala skogsmarksarealen och hur stor skogsmark som i genomsnitt och median tillhör varje brukningsenhet.
 
-En brukningsenhet utgörs av den produktiva skogsmark inom en kommun som tillhör samma ägare. Det kan vara en eller flera ägare och eftersom det är möjligt att äga mark i flera kommuner kan inte antalet ägare summeras över flera kommuner upp till större geografiska områden.
+En brukningsenhet avser all produktiv skogsmark inom en kommun som tillhör samma ägare. Eftersom samma ägare kan äga skog i flera kommuner går det inte att summera antalet ägare över större geografiska områden.
+
+Skillnader mellan medel- och medianvärden används för att visa hur jämnt eller ojämnt skogsägandet är fördelat inom kommunerna.
+
+Data är hämtat från @skogsstyrelsen
 
 ```{r}
 #| fig-cap: ' '
@@ -100,13 +103,12 @@ Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så st
 
 Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och störst i Uppsala kommun och antalet enheter är väldigt jämnt under perioden, men en tydlig ökning syns i Östhammar. Antalet ägare håller sig också väldigt stabilt under perioden, men en nedgång syns i Enköping och en lite uppgång i Östhammar.
 
-
-
 ## Kalmark
 
-Data är hämtat från @skogsstyrelsen.
+I detta delkapitel visas omfattningen av sammanhängande kalmark, det vill säga områden där skog har avverkats under de senaste tre avverkningssäsongerna med ett inbördes avstånd av 20 meter. Kalmark används som en indikator för skogsbrukets påverkan på landskapet. Redovisningen sker som medianen av sammanhängande kalmarksareal per län.
 
-Kalmark inkluderar alla avverkningar som gjorts de sista tre avverkningssäsongerna med ett inbördes avstånd av 20 meter.
+
+Data är hämtat från @skogsstyrelsen.
 
 ```{r}
 #| fig-cap: ' '
@@ -118,10 +120,9 @@ kalmark()
 
 Sett till medianen för sammanhängande kalmarksareal så ligger länet nära mitten av länen i datat, trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms och Södermanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
 
-
 ## Ekologisk brukad åkermark
 
-Ekologiskt brukad åkermark avser jordbruksmark som odlas enligt ekologiska produktionsmetoder i enlighet med EU-förordning (EG) nr 834/2007. Skillnader i kommunkodning mellan Lantbruksregistret och kontrollorganen kan påverka resultaten, varför nyckeltalet bör tolkas med försiktighet.
+Detta avsnitt visar hur stor andel av åkermarken i respektive kommun som brukas enligt ekologiska produktionsmetoder. Ekologisk odling regleras av EU:s regelverk och syftar till att minska miljöpåverkan från jordbruket. Skillnader i kommunkodning mellan Lantbruksregistret och kontrollorganen kan påverka resultaten, varför nyckeltalet bör tolkas med försiktighet.
 
 Data kommer från @kolada, med källhänvisning till @jordbruksverket.
 
@@ -149,9 +150,11 @@ knitr::include_graphics("Figurer/eko_mark.svg")
 
 ## Betesmark
 
-Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
-Nyckeltalet visar andelen av det aktuella områdets totala landareal som består av betesmark, samt den totala betesmarksytan inom området. Betesmarker utgör viktiga livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av betesmarkens areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
+I detta delkapitel redovisas andelen av det aktuella områdets totala landareal som består av betesmark, samt den totala betesmarksytan inom området. Betesmarker utgör viktiga livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av betesmarkens areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
+
+
+Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
 ```{r}
 #| fig-cap: ''
@@ -177,9 +180,11 @@ Uppsala är den kommun som har störst yta av betesmark i länet, på över 4500
 
 ## Slåtteräng
 
-Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
-Nyckeltalet visar andelen av det aktuella områdets totala landareal som utgörs av slåtteräng, samt den totala ytan slåtteräng inom området. Slåtterängar är betydelsefulla livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av slåtterängarnas areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
+Detta avsnitt visar andelen av det aktuella områdets totala landareal som utgörs av slåtteräng, samt den totala ytan slåtteräng inom området. Slåtterängar är betydelsefulla livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av slåtterängarnas areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
+
+
+Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
 ```{r}
 #| fig-cap: ''
@@ -204,7 +209,7 @@ knitr::include_graphics("Figurer/slatterang.svg")
 Heby har sett till total yta slåtteräng en mycket större yta än övriga kommuner i länet, men sett till andelar så är Älvkarleby den kommun som har högst värde. Håbo har den betydligt minsta ytan och andelen slåtteräng i länet och för Knivsta så saknas data och är därav bortplockad från grafen.
 
 # Skyddad natur
-
+Detta avsnitt ger en översikt av hur stor andel av kommunernas areal som är skyddad natur.
 Skyddad natur avser områden inom nationalpark, naturreservat, naturvårdsområden eller biotopskyddsområden. Nyckeltalen visar andelen skyddad natur av total areal, uppdelat på land, inlandsvatten och hav.
 
 -   Land: inkluderar mark samt mindre vattendrag och gölar, dividerat med landareal i det geografiska området.
@@ -239,7 +244,7 @@ image_read("Mediabank/Kungsangslilja.png") %>%
   image_ggplot(interpolate = TRUE)
 ```
 
-Invånares medelavstånd i km till närmaste skyddade natur. Indikatorn följer miljömålet God bebyggd miljö, med målet att alla ska ha skyddad natur inom 1 km. Data hämtat från @kolada som hänvisar vidare vidare till @scb_statistikdatabasen.
+Detta delkapitel visar hur långt invånarna i genomsnitt har till närmaste skyddade naturområde. Måttet används för att belysa tillgången till natur för rekreation och friluftsliv. Indikatorn följer miljömålet God bebyggd miljö, med målet att alla ska ha skyddad natur inom 1 km. Data hämtat från @kolada som hänvisar vidare vidare till @scb_statistikdatabasen.
 
 ```{r}
 #| fig-cap: ''
@@ -287,9 +292,11 @@ Källa: Naturvårdsverket
 
 # Sjöar och vattendrag
 
+Detta avsnitt beskriver den ekologiska statusen i länets sjöar och vattendrag. Ekologisk status är ett samlat mått som speglar hur väl vattenmiljöerna fungerar ur ett ekologiskt perspektiv.
+
 ## Ekologiska sjöar
 
-Nyckeltalet visar andelen sjöar med god ekologisk status i procent av det totala antalet sjöar. En sjö som sträcker sig över flera kommuner eller län räknas med i beräkningen för samtliga de kommuner eller län som sjön har koppling till.
+Här redovisas andelen sjöar med god ekologisk status i procent av det totala antalet sjöar. En sjö som sträcker sig över flera kommuner eller län räknas med i beräkningen för samtliga de kommuner eller län som sjön har koppling till.
 
 Klassningen av sjöar sker successivt inom en flerårig bedömningscykel. I Kolada uppdateras årligen det aktuella preliminära resultatet allteftersom ny information tillkommer. När en cykel avslutas fastställs det slutgiltiga resultatet, vilket även uppdaterar data fem år tillbaka i tiden.
 
@@ -321,9 +328,8 @@ Störst andel ekologiska sjöar finns i Heby, där över 45 % av alla sjöar kla
 
 ## Vattendrag
 
-Nyckeltalet visar andelen vattendrag med god ekologisk status i procent av det totala antalet vattendrag. Ett vattendrag som sträcker sig över flera kommuner eller län räknas med i beräkningen för samtliga de kommuner eller län som det har koppling till.
+I detta delkapitel visas andelen vattendrag som uppnår god ekologisk status. Precis som för sjöar kan ett och samma vattendrag ingå i flera kommuners statistik.
 
-Klassningen av vattendrag sker likt sjöar.
 
 Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelserna.
 
@@ -351,7 +357,11 @@ Endast fyra kommuner i länet har data för vattendrag i hänsyn till ekologisk 
 
 ## Grundvatten
 
+Detta avsnitt behandlar grundvattnets kvalitet och nivåer i länet. Grundvatten är en central resurs för dricksvattenförsörjning och ekosystem och påverkas både av naturliga variationer och mänsklig påverkan.
+
 ### Kvalitet
+
+Här presenteras information om provplatser och analyser av grundvattnets kemiska och mikrobiologiska kvalitet. Syftet är att ge en översikt av tillgängliga mätdata och deras geografiska spridning.
 
 Grundvattenkvalitet analysresultat och provplatser omfattar öppet tillgängliga grundvattenkemiska och -mikrobiologiska data, bland annat sådana som SGU samlat in och/eller förvaltar genom det nationella datavärdskapet för grundvatten. Datat härstammar huvudsakligen från nationell och regional miljöövervakning, samt från SGU:s så kallade Grundvattennät.
 
@@ -392,9 +402,9 @@ grundvatten_sort()
 
 ### Nivå
 
-Datan är hämtad från @sgu.
-
 @fig-grundniva visar långsiktig trend i grundvattennivån för mätpunkter i Uppsala län som har minst 10 observationer fördelade över minst 5 år. Varje punkt representerar en mätstation, och färgen visar den beräknade trenden i nivåförändring per år (meter över havet). Trenden är indikativ eftersom lutningens statistiska osäkerhet inte beaktas, stationer med få mätpunkter kan ge osäkra värden, och ojämna tidsintervall tillsammans med naturliga säsongsvariationer kan göra att den linjära trenden över- eller underskattar den verkliga förändringen. Varje punkt representerar en plats där SGU har utfört mätningar.
+
+Datan är hämtad från @sgu.
 
 **Färgskala:**
 

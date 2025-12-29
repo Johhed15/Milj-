@@ -94,9 +94,10 @@ avfall <- function(){
   
   #  Layout
   fig <- fig %>%
-    layout(font = list(family = "sourcesanspro", size=18),
+    layout(
            margin = list(t = 120,b=60),
-           title = list(text = paste("<b>",titles[1],"<b>"), y = 0.95, x = 0.55),
+           title = list(text = paste("<b>",titles[1],"<b>"), y = 0.95, x = 0.55,
+                        font = list(size = 20, color = "#B81867")),
            xaxis = list(title = "", tickangle = -45),
            yaxis = list(title = "<b>Andel (%)<b>", 
                         rangemode = "tozero"),
@@ -224,8 +225,8 @@ Avfall_kategoori <- function(){
   #  Lägg till dropdownmenyn 
   fig <- fig %>%
     layout(hovermode = 'x unified',
-      title = paste("<b>Insamlat avfall per kategori –", region[1],"<b>"),
-      font = list(family = "sourcesanspro",size=16),
+      title = list(text =paste("<b>Insamlat avfall per kategori –", region[1],"<b>"),
+                   font = list(size = 20, color = "#B81867")),
       xaxis = list(title = "", tickmode = "linear", tickangle = -45),
       yaxis = list(title = "<b>Kg/invånare<b>"),
       showlegend = TRUE,
@@ -707,8 +708,9 @@ andel_skyddadnatur <- function(){
     layout(
       barmode = "group",
       hovermode = "x unified",
-      title = paste0("<b>Andel skyddad natur – ", region[1], " (", latest_year, ")</b>"),
-      font = list(family = "sourcesanspro", size=18),
+      title = list (text =paste0("<b>Andel skyddad natur – ", region[1], " (", latest_year, ")</b>"),
+                    font = list(size = 20, color = "#B81867")),
+      
       xaxis = list(title = "",tickfont = list(size = 18)),
       yaxis = list(title = "<b>Andel (%)</b>", range = c(0, 100)),
       showlegend = FALSE,
@@ -1049,9 +1051,10 @@ kalmark <- function(){
 
   #  Layout
   fig <- fig %>%
-    layout(font = list(family = "sourcesanspro", size=18),
+    layout(
            margin = list(t = 50),
-           title = list(text = paste("<b>Medianen för sammanhängande kalmarksareal<b>"), y = 0.95, x = 0.55),
+           title = list(text = paste("<b>Medianen för sammanhängande kalmarksareal<b>"), y = 0.95, x = 0.55,
+                        font = list(size = 20, color = "#B81867")),
            xaxis = list(title = "", tickangle = -45,
                         tickmode = "linear",         
                         dtick = 2),
@@ -1060,7 +1063,7 @@ kalmark <- function(){
            annotations = list(
              text ='Källa: Skogsstyrelsen',
              x = 0,            
-             y = -0.2,        
+             y = -0.15,        
              xref = "paper",
              yref = "paper",
              xanchor = "left",
@@ -1159,9 +1162,10 @@ prod_skog <- function(){
   
   #  Layout
   fig <- fig %>%
-    layout(font = list(family = "sourcesanspro", size=18),
+    layout(
            margin = list(t = 50),
-           title = list(text = paste("<b>",titles[1],"<b>"), y = 0.95, x = 0.55),
+           title = list(text = paste("<b>",titles[1],"<b>"), y = 0.95, x = 0.55,
+                        font = list(size = 20, color = "#B81867")),
            xaxis = list(title = "", tickangle = -45,
                         dtick = 2),
            yaxis = list(title = paste("<b>",titles[1],"<b>"), 
@@ -1534,7 +1538,8 @@ grundvatten_test <- function(){
   #  dropdown 
   fig <- fig %>%
     layout(
-      title = "Tidsserie för vald parameter",
+      title = list(text="Tidsserie för vald parameter",
+                   font = list(size = 20, color = "#B81867")),
       xaxis = list(title = "Datum"),
       yaxis = list(title = param_units$unit[1]),   # default unit = first parameter
       updatemenus = list(

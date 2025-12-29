@@ -16,13 +16,13 @@ get_settings <- function() {
   
   # Theme
   region_theme_pdf <- ggplot2::theme(
-    text = element_text(family = "sourcesanspro", size = 18),
-    plot.title = element_text(family = "sourcesanspro", face = "bold", size = 20, hjust = 0.5),
+    text = element_text(family = "sourcesanspro", size = 12),
+    plot.title = element_text(family = "Arial", face = "bold", size = 20, hjust = 0.5, color = "#B81867"),
     axis.title = element_text(size = 16, face = "bold"),
-    axis.text = element_text(size = 14),
-    legend.text = element_text(size = 16),
-    legend.title = element_text(family = "sourcesanspro", face = "bold", size = 16),
-    strip.text = element_text(family = "sourcesanspro", face = "bold", size = 16),
+    axis.text = element_text(size = 12),
+    legend.text = element_text(size = 12),
+    legend.title = element_text(family = "Arial", face = "bold", size = 16),
+    strip.text = element_text(family = "Arial", face = "bold", size = 14),
     plot.margin =grid::unit(c(15, 30, 15, 15), "pt")
   )
   ggplot2::theme_set(ggplot2::theme_minimal() + region_theme_pdf)

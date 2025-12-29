@@ -50,7 +50,9 @@ image_read("Mediabank/Miljö 2_Liljeröd_RGB.png") %>%
 
 # Länsstyrelsens uppföljning av kvalitetsmiljömål
 
-All information, data och sammanfattningar i detta avsnitt är hämtade direkt från Länsstyrelsens regionala årliga uppföljning för Uppsala län 2024 @rus2024uppsala. Tabellen nedan återger länsstyrelsens bedömningar och trender för samtliga miljökvalitetsmål i länet, precis som de presenteras i den ursprungliga rapporten.
+I detta avsnitt redovisas information, data och sammanfattningar från Länsstyrelsens regionala årliga uppföljning för Uppsala län 2024 @rus2024uppsala. För varje miljökvalitetsmål görs en bedömning av om målet bedöms kunna nås till år 2030 samt vilken trend utvecklingen har. Bedömningarna används som underlag för prioritering av åtgärder och för att följa länets bidrag till de nationella miljömålen.
+
+Tabellen nedan återger länsstyrelsens bedömningar exakt så som de presenteras i den ursprungliga rapporten.
 
 ```{r}
 #| tbl-cap: ''
@@ -62,7 +64,11 @@ Endast miljömålet om "Bara naturlig försurning" anses kunna uppnås till 2030
 
 # Kommunindex
 
+Kommunindexen sammanfattar flera miljörelaterade indikatorer till jämförbara mått på kommunnivå. Syftet är att ge en översiktlig bild av hur kommunerna i länet presterar i relation till varandra och till riket som helhet. Index bör tolkas som ett sammanfattande jämförelsemått och inte som ett fullständigt mått på kommunernas totala arbete.
+
 ## Miljökvalitetsindex
+
+Miljökvalitetsindexet beskriver kommunernas miljötillstånd med fokus på natur- och vattenmiljöer samt tillgång till grönområden. Indexet bygger på ett urval av indikatorer som speglar både ekologisk kvalitet och närhet till natur för invånarna.
 
 Kommunindexet för temat Miljökvalitet baseras på följande indikatorer:
 
@@ -103,9 +109,13 @@ Endast tre kommuner i länet ligger mellan 25 och 75 percentilen för miljöinde
 
 ## Hållbarhetsindex
 
-Data är hämtat från @kolada som hänvisar till @tillvaxtverket beräkningar
+Hållbarhetsindexet ger en bredare bild av kommunernas miljömässiga hållbarhet. Det omfattar utsläpp av växthusgaser, kväveoxider och partiklar (PM2.5), energianvändning av icke-förnybara bränslen, andel förnybar fjärrvärmeproduktion, skyddad natur på land och i inlandsvatten, vattentäkter med skyddsområde samt hur mycket av det kommunala avfallet som samlas in och materialåtervinns.
+Indexet speglar därmed både miljöbelastning och kommunernas arbete med omställning och resurseffektivitet. 
 
-Kommunindex för miljömässig hållbarhet bygger på flera indikatorer som speglar kommunernas miljöarbete och resursanvändning. Det omfattar utsläpp av växthusgaser, kväveoxider och partiklar (PM2.5), energianvändning av icke-förnybara bränslen, andel förnybar fjärrvärmeproduktion, skyddad natur på land och i inlandsvatten, vattentäkter med skyddsområde samt hur mycket av det kommunala avfallet som samlas in och materialåtervinns. Alla nyckeltal normaliseras till en skala från 0 till 100, där 0 är sämst och 100 bäst.
+Alla nyckeltal normaliseras till en skala från 0 till 100, där 0 är sämst och 100 bäst.
+
+
+Data är hämtat från @kolada som hänvisar till @tillvaxtverket beräkningar.
 
 ```{r}
 #| fig-cap: ''
@@ -133,9 +143,11 @@ Uppsala utmärker sig särskilt genom att tillhöra den bästa kvartilen, medan 
 
 # Riskområden
 
-Data är hämtat från @naturvardsverket2024.
+Detta avsnitt beskriver förekomsten av förorenade områden i landet där riskklassningen används för att bedöma hur stor risk ett område utgör för människors hälsa och miljön.
 
 Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög risk för människor och miljö (riskklass 1 och 2), medan de resterande två tredjedelarna bedöms ha måttlig eller liten risk (riskklass 3 och 4). Länsstyrelserna bedömning bygger på föroreningens farlighet, spridningsförmåga och områdets känslighet, och inventeringen avslutades 2015 med fortsatt fokus på de mest prioriterade områdena, inklusive PFAS- och sedimentområden sedan 2023.
+
+
 
 -   Riskklass 1: Mycket stor risk, ca 1 100 objekt
 
@@ -145,6 +157,9 @@ Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög ris
 
 -   Riskklass 4: Liten risk, ca 6 000 objekt
 
+
+Data är hämtat från @naturvardsverket2024.
+
 ```{r}
 #| tbl-cap: ''
 #| label: tbl-riskomrade
@@ -152,4 +167,4 @@ Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög ris
 riskomraden()
 ```
 
-I Uppsala län så finns det 71 områden i riskklass 1 och 319 i riskklass 2, jämförs länet mot resterande län så är det endast Skåne, Stockholm, Västernorrland och Västragötaland som har fler områden i riskklass 1. Endast Gotland har färrre områden i riskklass 4.
+I Uppsala län så finns det 71 områden i riskklass 1 och 319 i riskklass 2, jämförs länet mot resterande län så är det endast Skåne, Stockholm, Västernorrland och Västragötaland som har fler områden i riskklass 1. Endast Gotland har färre områden i riskklass 4.
