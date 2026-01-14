@@ -36,7 +36,7 @@ source("Script/create_tables.R")
 
 # Inledning
 
-inledning/sammanfattning
+Denna rapport redovisar miljötillståndet i Uppsala län och bygger på Länsstyrelsens regionala uppföljning. Syftet är att ge en samlad bild av länets miljökvalitet, naturresurser och hållbarhetsarbete på kommunnivå, samt att följa upp utvecklingen mot nationella miljökvalitetsmål.
 
 ```{r}
 #| fig-cap: "Miljö 2 Liljeröd"
@@ -109,11 +109,9 @@ Endast tre kommuner i länet ligger mellan 25 och 75 percentilen för miljöinde
 
 ## Hållbarhetsindex
 
-Hållbarhetsindexet ger en bredare bild av kommunernas miljömässiga hållbarhet. Det omfattar utsläpp av växthusgaser, kväveoxider och partiklar (PM2.5), energianvändning av icke-förnybara bränslen, andel förnybar fjärrvärmeproduktion, skyddad natur på land och i inlandsvatten, vattentäkter med skyddsområde samt hur mycket av det kommunala avfallet som samlas in och materialåtervinns.
-Indexet speglar därmed både miljöbelastning och kommunernas arbete med omställning och resurseffektivitet. 
+Hållbarhetsindexet ger en bredare bild av kommunernas miljömässiga hållbarhet. Det omfattar utsläpp av växthusgaser, kväveoxider och partiklar (PM2.5), energianvändning av icke-förnybara bränslen, andel förnybar fjärrvärmeproduktion, skyddad natur på land och i inlandsvatten, vattentäkter med skyddsområde samt hur mycket av det kommunala avfallet som samlas in och materialåtervinns. Indexet speglar därmed både miljöbelastning och kommunernas arbete med omställning och resurseffektivitet.
 
 Alla nyckeltal normaliseras till en skala från 0 till 100, där 0 är sämst och 100 bäst.
-
 
 Data är hämtat från @kolada som hänvisar till @tillvaxtverket beräkningar.
 
@@ -147,8 +145,6 @@ Detta avsnitt beskriver förekomsten av förorenade områden i landet där riskk
 
 Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög risk för människor och miljö (riskklass 1 och 2), medan de resterande två tredjedelarna bedöms ha måttlig eller liten risk (riskklass 3 och 4). Länsstyrelserna bedömning bygger på föroreningens farlighet, spridningsförmåga och områdets känslighet, och inventeringen avslutades 2015 med fortsatt fokus på de mest prioriterade områdena, inklusive PFAS- och sedimentområden sedan 2023.
 
-
-
 -   Riskklass 1: Mycket stor risk, ca 1 100 objekt
 
 -   Riskklass 2: Stor risk, ca 8 500 objekt
@@ -156,7 +152,6 @@ Cirka en tredjedel av Sveriges riskklassade förorenade områden utgör hög ris
 -   Riskklass 3: Måttlig risk, ca 11 500 objekt
 
 -   Riskklass 4: Liten risk, ca 6 000 objekt
-
 
 Data är hämtat från @naturvardsverket2024.
 

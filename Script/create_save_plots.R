@@ -20,6 +20,13 @@
 }
 
 
+
+if (!file.exists('Figurer')){
+  dir.create('Figurer')
+}
+
+
+
 ########### Avfall ###########
 
 avfall <- function(){

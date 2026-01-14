@@ -70,7 +70,7 @@ rus_lansstyrelse <- function(lan = 'uppsala-lan', year= '2024'){
     ) %>%
     tab_options(
       table.font.names = "sourcesanspro",
-      table.font.size = px(14),
+      table.font.size = px(16),
       table.align = "center",
       heading.align = "center"
     ) 

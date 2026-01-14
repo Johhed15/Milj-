@@ -37,7 +37,9 @@ source("Script/create_tables.R")
 
 # Inledning
 
-inledning/sammanfattning
+Denna rapport ger en samlad bild av länets natur- och miljöförhållanden. Här beskrivs hur marken används, hur stor del som består av skog, åkermark, betesmark och slåtteräng, samt hur mycket natur som är formellt skyddad. Vidare redovisas invånarnas tillgång till skyddade naturområden genom avståndsmått, liksom förekomsten av ekologiskt brukad åkermark.
+
+Avsnittet omfattar också statusen i sjöar och vattendrag samt kvalitet och nivåer i grundvattnet. Dessa indikatorer belyser ekosystemens tillstånd och används för uppföljning av flera nationella miljökvalitetsmål, bland annat Ett rikt växt- och djurliv, Ett rikt odlingslandskap och Grundvatten av god kvalitet.
 
 ```{r}
 #| fig-cap: "Natur"
@@ -107,7 +109,6 @@ Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och 
 
 I detta delkapitel visas omfattningen av sammanhängande kalmark, det vill säga områden där skog har avverkats under de senaste tre avverkningssäsongerna med ett inbördes avstånd av 20 meter. Kalmark används som en indikator för skogsbrukets påverkan på landskapet. Redovisningen sker som medianen av sammanhängande kalmarksareal per län.
 
-
 Data är hämtat från @skogsstyrelsen.
 
 ```{r}
@@ -150,9 +151,7 @@ knitr::include_graphics("Figurer/eko_mark.svg")
 
 ## Betesmark
 
-
 I detta delkapitel redovisas andelen av det aktuella områdets totala landareal som består av betesmark, samt den totala betesmarksytan inom området. Betesmarker utgör viktiga livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av betesmarkens areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
-
 
 Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
@@ -180,9 +179,7 @@ Uppsala är den kommun som har störst yta av betesmark i länet, på över 4500
 
 ## Slåtteräng
 
-
 Detta avsnitt visar andelen av det aktuella områdets totala landareal som utgörs av slåtteräng, samt den totala ytan slåtteräng inom området. Slåtterängar är betydelsefulla livsmiljöer för odlingslandskapets biologiska mångfald. En minskning av slåtterängarnas areal försämrar förutsättningarna för många arter som är beroende av dessa miljöer. Indikatorn används för att följa upp miljökvalitetsmålen Ett rikt odlingslandskap och Ett rikt växt- och djurliv.
-
 
 Data har hämtats från @kolada, som i sin tur refererar till @jordbruksverket.
 
@@ -209,8 +206,8 @@ knitr::include_graphics("Figurer/slatterang.svg")
 Heby har sett till total yta slåtteräng en mycket större yta än övriga kommuner i länet, men sett till andelar så är Älvkarleby den kommun som har högst värde. Håbo har den betydligt minsta ytan och andelen slåtteräng i länet och för Knivsta så saknas data och är därav bortplockad från grafen.
 
 # Skyddad natur
-Detta avsnitt ger en översikt av hur stor andel av kommunernas areal som är skyddad natur.
-Skyddad natur avser områden inom nationalpark, naturreservat, naturvårdsområden eller biotopskyddsområden. Nyckeltalen visar andelen skyddad natur av total areal, uppdelat på land, inlandsvatten och hav.
+
+Detta avsnitt ger en översikt av hur stor andel av kommunernas areal som är skyddad natur. Skyddad natur avser områden inom nationalpark, naturreservat, naturvårdsområden eller biotopskyddsområden. Nyckeltalen visar andelen skyddad natur av total areal, uppdelat på land, inlandsvatten och hav.
 
 -   Land: inkluderar mark samt mindre vattendrag och gölar, dividerat med landareal i det geografiska området.
 
@@ -329,7 +326,6 @@ Störst andel ekologiska sjöar finns i Heby, där över 45 % av alla sjöar kla
 ## Vattendrag
 
 I detta delkapitel visas andelen vattendrag som uppnår god ekologisk status. Precis som för sjöar kan ett och samma vattendrag ingå i flera kommuners statistik.
-
 
 Data är hämtat från @kolada som hänvisar vidare till @viss och Länsstyrelserna.
 
