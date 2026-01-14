@@ -46,8 +46,8 @@ rus_lansstyrelse <- function(lan = 'uppsala-lan', year= '2024'){
     data_color(
       columns = Målbedömning,
       colors = scales::col_factor(
-        palette = c("#4AA271", "#D0342C", "#6F787E","#DBECE3"),  
-        levels = c("Uppnås", "Uppnås ej", "Ingen regional bedömning","Nära")
+        palette = c("#4AA271","#4AA271", "#D0342C", "#6F787E","#DBECE3"),  
+        levels = c("Uppnås","Ja, målet kan nås", "Uppnås ej", "Ingen regional bedömning","Nära")
       )
     ) %>%
     data_color(

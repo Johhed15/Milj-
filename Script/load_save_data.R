@@ -380,54 +380,54 @@ print('Nedladdning av "df_kalmarksareal.csv" har genomförts')
 }
 
 
-################# GEOdata atom #############
+################# GEOdata atom (Används ej för tillfället, bristfällig kvalitet) #############
 # Denna funktion är endast skapad för att inte köra koden nedan, kör varje del manuellt om ny data finns tillgänglig.
-geo_data <- function(){
+#geo_data <- function(){
 ############# Skyddade områden: naturvårdsområden ##########
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/dd8371a0-f692-44e3-bd0b-25de8dee8906
-load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/ps/SE_ProtectedSites_serviceFeed.xml',file_path ="Data/ProtectedSites")
+#load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/ps/SE_ProtectedSites_serviceFeed.xml',file_path ="Data/ProtectedSites")
 
 ########### Produktionsanläggningar ########## 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/354cb6ff-b2e5-4945-8b4e-9df1c8c401c8
 #Produktionsanläggningar, rapportering 2021 (EU Registry on industrial sites - 2010/75/EU samt 166/2006). Gäller data från år 2020.
-load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/pf/SE_PF_EURegistry_serviceFeed.xml',file_path ="Data/prodanlagg")
+#load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/pf/SE_PF_EURegistry_serviceFeed.xml',file_path ="Data/prodanlagg")
 
 
 ########### Biogeografiska regioner: ########## 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/b166b68e-1305-4acc-b3de-a4f9cfa22faf
-load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/br/SE_BR_Biogeoregion_serviceFeed.xml',file_path ="Data/Biogeografiska")
-}
+#load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/br/SE_BR_Biogeoregion_serviceFeed.xml',file_path ="Data/Biogeografiska")
+#}
 
 
 # Denna funktion är endast skapad för att inte köra koden nedan, kör varje del manuellt om ny data finns tillgänglig.
-vatten_geo <- function(){
+
 ############# grundvattenkvalitet ###########
 {
 # Länk tagen från hemsidan 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/20b36a27-3a24-4a61-a3e0-4f533e76a60b
-url<- 'https://resource.sgu.se/data/oppnadata/grundvattenkvalitet-analysresultat-provplatser/grundvattenkvalitet-analysresultat-provplatser.zip'     
+#url<- 'https://resource.sgu.se/data/oppnadata/grundvattenkvalitet-analysresultat-provplatser/grundvattenkvalitet-analysresultat-provplatser.zip'     
 
 # Var filen ska sparas lokalt
-dest <- "Data/grundvatten.zip"
+#dest <- "Data/grundvatten.zip"
 
 # Skapa mapp om den inte finns
-dir.create(dirname(dest), recursive = TRUE, showWarnings = FALSE)
+#dir.create(dirname(dest), recursive = TRUE, showWarnings = FALSE)
 
 # Ladda ned filen
-download.file(url, dest, mode = "wb")
+#download.file(url, dest, mode = "wb")
 
 # länk från : https://www.sgu.se/produkter-och-tjanster/geologiska-data/grundvatten--geologiska-data/grundvattenkvalitet/
-url1 <- 'https://api.sgu.se/oppnadata/grundvattenkvalitet-analysresultat-provplatser/ogc/features/v1/collections/analysresultat/items?f=application/json&limit=10000&filter=lan=%2703%27'
+#url1 <- 'https://api.sgu.se/oppnadata/grundvattenkvalitet-analysresultat-provplatser/ogc/features/v1/collections/analysresultat/items?f=application/json&limit=10000&filter=lan=%2703%27'
 
-data <- GET(url1)
+#data <- GET(url1)
 # Läs in JSON-innehållet
-content_json <- rawToChar(data$content)
-data <- fromJSON(content_json, flatten = TRUE)
+#content_json <- rawToChar(data$content)
+#data <- fromJSON(content_json, flatten = TRUE)
 
 # Platta ut automatiskt
-df <- data$features %>% as_tibble()
+#df <- data$features %>% as_tibble()
 
-write.csv(df, 'Data/analys_grundvatten.csv', row.names = F)
+#write.csv(df, 'Data/analys_grundvatten.csv', row.names = F)
 }
 
 
@@ -435,106 +435,106 @@ write.csv(df, 'Data/analys_grundvatten.csv', row.names = F)
 # https://www.sgu.se/produkter-och-tjanster/geologiska-data/grundvatten--geologiska-data/grundvattennivaer/
 # https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/openapi?f=text%2Fhtml
 {
-items_url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/nivaer/items"
+#items_url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/nivaer/items"
 
 # Testa att hämta första 1000 med GEOJSON
-res <- GET(items_url, query = list(
-  f = "application/geo+json",
-  limit = 1000
-))
+#res <- GET(items_url, query = list(
+#  f = "application/geo+json",
+#  limit = 1000
+#))
 
-url_stations <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/stationer/items"
+#url_stations <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/stationer/items"
 
-res <- GET(url_stations, query = list(
-  f = "application/geo+json",
-  limit = 10000
-))
+#res <- GET(url_stations, query = list(
+ # f = "application/geo+json",
+#  limit = 10000
+#))
 
 
-get_stations <- function() {
-  url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/stationer/items"
+#get_stations <- function() {
+ # url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/stationer/items"
   
   
-  res <- GET(url_stations, query = list(
-    f = "application/geo+json",
-    limit = 10000
-  ))
+#  res <- GET(url_stations, query = list(
+ #   f = "application/geo+json",
+  #  limit = 10000
+  #))
   
-  stations
+  #stations
 }
 
-stations <- get_stations()
+#stations <- get_stations()
 
-cat("Antal stationer:", nrow(stations), "\n")
+#cat("Antal stationer:", nrow(stations), "\n")
 
 
 ### Filtrera stationer till Uppsala län (lanskod = 03)
 
-stations_uppsala <- stations %>% 
-  filter(lanskod == "03")
+#stations_uppsala <- stations %>% 
+ # filter(lanskod == "03")
 
-cat("Antal stationer i Uppsala län:", nrow(stations_uppsala), "\n")
+#cat("Antal stationer i Uppsala län:", nrow(stations_uppsala), "\n")
 
 
 ###  Hämta observationer i block
 
 
-get_observations <- function(limit = 2000) {
-  base_url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/nivaer/items"
+#get_observations <- function(limit = 2000) {
+#  base_url <- "https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/collections/nivaer/items"
   
-  all <- list()
-  start <- 0
-  page <- 1
+#  all <- list()
+ # start <- 0
+#  page <- 1
   
-  repeat {
-    cat("Hämtar sida", page, "(startIndex =", start, ")\n")
+ # repeat {
+  #  cat("Hämtar sida", page, "(startIndex =", start, ")\n")
     
-    res <- GET(base_url, query = list(
-      f = "application/json",
-      limit = limit,
-      startIndex = start
-    ))
+  #  res <- GET(base_url, query = list(
+   #   f = "application/json",
+    #  limit = limit,
+    #  startIndex = start
+  #  ))
     
-    if (status_code(res) != 200) {
-      cat("\nAvbröt: API svarade:", status_code(res), "\n")
-      break
-    }
+   # if (status_code(res) != 200) {
+  #    cat("\nAvbröt: API svarade:", status_code(res), "\n")
+   #   break
+  #  }
     
-    txt <- content(res, "text", encoding = "UTF-8")
-    parsed <- fromJSON(txt)
+   # txt <- content(res, "text", encoding = "UTF-8")
+  #  parsed <- fromJSON(txt)
     
-    items <- parsed$features$properties
+  #  items <- parsed$features$properties
     
-    if (length(items) == 0) {
-      cat("Inga fler rader.\n")
-      break
-    }
+  #  if (length(items) == 0) {
+  #    cat("Inga fler rader.\n")
+  #    break
+  #  }
     
-    cat("  → Hämtade", nrow(items), "rader\n")
+   # cat("  → Hämtade", nrow(items), "rader\n")
     
-    all[[page]] <- items
+   # all[[page]] <- items
     
     # pagination
-    start <- start + limit
-    page <- page + 1
-  }
+  #  start <- start + limit
+  #  page <- page + 1
+  #}
   
-  bind_rows(all)
-}
+#  bind_rows(all)
+#}
 
-obs_all <- get_observations()
+#obs_all <- get_observations()
 
-cat("Totalt antal observationer hämtade:", nrow(obs_all), "\n")
+#cat("Totalt antal observationer hämtade:", nrow(obs_all), "\n")
 
 
 
 ###  Filtrera observationer till stationer som ligger i Uppsala län
 
 
-obs_uppsala <- obs_all %>%
-  filter(platsbeteckning %in% stations_uppsala$platsbeteckning)
+#obs_uppsala <- obs_all %>%
+#  filter(platsbeteckning %in% stations_uppsala$platsbeteckning)
 
-cat("Observationer i Uppsala län:", nrow(obs_uppsala), "\n")
+#cat("Observationer i Uppsala län:", nrow(obs_uppsala), "\n")
 
 
 
@@ -542,39 +542,38 @@ cat("Observationer i Uppsala län:", nrow(obs_uppsala), "\n")
 
 
 # plocka ut koordinatkolumner från stationslagret
-stations_clean <- stations_uppsala %>%
-  select(platsbeteckning ) %>%
-  mutate(
-    lon = st_coordinates(stations_uppsala)[,1],
-    lat = st_coordinates(stations_uppsala)[,2]
-  ) %>%
-  st_drop_geometry()
+#stations_clean <- stations_uppsala %>%
+#  select(platsbeteckning ) %>%
+#  mutate(
+ #   lon = st_coordinates(stations_uppsala)[,1],
+#    lat = st_coordinates(stations_uppsala)[,2]
+#  ) %>%
+ # st_drop_geometry()
 
 # slå ihop via platsbeteckning
-merged <- obs_uppsala %>%
-  left_join(stations_clean, by = "platsbeteckning")
+#merged <- obs_uppsala %>%
+ # left_join(stations_clean, by = "platsbeteckning")
 
-cat("Efter join:", nrow(merged), "rader\n")
+#cat("Efter join:", nrow(merged), "rader\n")
 
 
 ###  Gör om till sf-objekt med riktiga punkter
 
 
-grundvatten_uppsala_sf <- st_as_sf(
-  merged,
-  coords = c("lon", "lat"),
-  crs = 4326,
-  remove = FALSE
-)
+#grundvatten_uppsala_sf <- st_as_sf(
+#  merged,
+#  coords = c("lon", "lat"),
+#  crs = 4326,
+#  remove = FALSE
+#)
 
-cat("Klart! sf-objekt med geometri skapat.\n")
+#cat("Klart! sf-objekt med geometri skapat.\n")
 
-sf::st_write(
-  grundvatten_uppsala_sf,
-  "Data/grundvatten_uppsala_sf.gpkg",
-  delete_dsn = TRUE
-)
+#sf::st_write(
+#  grundvatten_uppsala_sf,
+#  "Data/grundvatten_uppsala_sf.gpkg",
+#  delete_dsn = TRUE
+#)
 
-cat("Fil sparad: Data/grundvatten_uppsala_sf.gpkg\n")
-}
-}
+#cat("Fil sparad: Data/grundvatten_uppsala_sf.gpkg\n")
+#}

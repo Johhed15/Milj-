@@ -13,11 +13,7 @@ Detta är ett Quarto-projekt som visualiserar och analyserar miljön i Uppsala l
 
 # Det finns en del manuella nedladdningar som hittas i 'Script/create_save_plots'
 
-Detta gäller tex data från konsumtionskompassens sida och SMHI gällande temperatur, vid varje aktuell graf finns det instruktioner med länkar.
-
 ## Följ sedan
-
--   Just nu måste funktionern i Script/create_table som heter 'tab_alder_class' tas bort då den endast fungerar på uppsalas kommuner(gör automatisk)
 
 -   I Script/settings sätt kommunnamn, kommunkod, län och länskod till det som önskas. Sätt också färgkoder för kommuner här.
 
@@ -27,12 +23,11 @@ Detta gäller tex data från konsumtionskompassens sida och SMHI gällande tempe
 
 -   Här hittas också kommentarer om eventuell manuell nedladdning av filer vilket för denna rapport är:
 
-    - "data-och-statistik-fororenade-omraden-fororenade-omraden-.csv" laddas ned från: https://www.naturvardsverket.se/data-och-statistik/fororenade-omraden/fororenade-omraden/
-  
-    - geo_data() tydligt markerad funktion i load_save_data() och i run_all_functions()
-    
-    -  vatten_geo() tydligt markerad funktion i load_save_data()
+    -   "data-och-statistik-fororenade-omraden-fororenade-omraden-.csv" laddas ned från: https://www.naturvardsverket.se/data-och-statistik/fororenade-omraden/fororenade-omraden/ (Kom ihåg att ladda ned som "csv")
 
+    -   geo_data() tydligt markerad funktion i load_save_data() och i run_all_functions()
+
+    -   vatten_geo() tydligt markerad funktion i load_save_data()
 
 -   I terminalen skriv \* quarto render
 

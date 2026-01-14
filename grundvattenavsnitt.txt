@@ -1,0 +1,126 @@
+# Sparar avsnittet för grundvatten om det blir intressant för framtiden
+
+## Grundvatten
+
+Detta avsnitt behandlar grundvattnets kvalitet och nivåer i länet. Grundvatten är en central resurs för dricksvattenförsörjning och ekosystem och påverkas både av naturliga variationer och mänsklig påverkan.
+
+### Kvalitet
+
+Här presenteras information om provplatser och analyser av grundvattnets kemiska och mikrobiologiska kvalitet. Syftet är att ge en översikt av tillgängliga mätdata och deras geografiska spridning.
+
+Grundvattenkvalitet analysresultat och provplatser omfattar öppet tillgängliga grundvattenkemiska och -mikrobiologiska data, bland annat sådana som SGU samlat in och/eller förvaltar genom det nationella datavärdskapet för grundvatten. Datat härstammar huvudsakligen från nationell och regional miljöövervakning, samt från SGU:s så kallade Grundvattennät.
+
+Utöver analysresultat, omfattar produkten också kringinformation rörande provtagningsomständigheter, analysförfarande och provplatsinformation. Analysresultat och provplatsinformation tillhandahålls som separata informationsmängder, sammanlänkade genom platsbeteckning.
+
+Produkten är tänkt att utgöra en samlad källa till rådata för tolkning och analys av Sveriges grundvattenkvalitet över tid och rum. Det bör dock understrykas att materialet företrädesvis omfattar data från områden som inte är lokalt påverkade och/eller förorenade. Ambitionen är att över tid utöka denna produkt med mer data, såväl från SGU:s egenfinansierade verksamhet som genom det nationella datavärdskapet för grundvatten.
+
+Källa: @sgu hämtat från @geodata
+
+Genom att klicka på en provplats kan man se information om platsens namn, provplatstyp , antalet prov som har gjort på platsen, första och senaste datumet för provtagningarna. Det går också att filtrera mellan platser som senast provats efter 2019. Med 'osäkert' så menas det att mätresultaten på positionskvaliteten inte kan säkerställas.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-grundvatten
+
+grundvatten()
+```
+
+::: source-note
+Källa: @sgu
+:::
+
+Av de senaste mätningarna i länet så har en stor andel visat positionskvalitet på under 20 meter och flera mätpunkter har en senaste mätning efter 2020. Klickas det på en mätpunkt så syns det information om tex jordart, bergart, geohydraliskt läge mm.
+
+### Analys
+
+Analysdata för varje plats i @fig-grundvatten finns tyvärr inte tillgängligt för halter i testerna, men av de som finns tillgängliga så går det i @tbl-resultat att söka efter platser för att se resultaten för parametrarna vid den senaste analysen för respektive parameter. Färgen på raderna i tabellen är baserad på värdet per parameter, där en högre halt an en parameter i länet har rödare färg och en lägre halt en grönare.
+
+hämtat från @sgu
+
+```{r}
+#| tbl-cap: ''
+#| label: tbl-resultat
+#| fig-height: 8
+
+grundvatten_sort()
+```
+
+### Nivå
+
+@fig-grundniva visar långsiktig trend i grundvattennivån för mätpunkter i Uppsala län som har minst 10 observationer fördelade över minst 5 år. Varje punkt representerar en mätstation, och färgen visar den beräknade trenden i nivåförändring per år (meter över havet). Trenden är indikativ eftersom lutningens statistiska osäkerhet inte beaktas, stationer med få mätpunkter kan ge osäkra värden, och ojämna tidsintervall tillsammans med naturliga säsongsvariationer kan göra att den linjära trenden över- eller underskattar den verkliga förändringen. Varje punkt representerar en plats där SGU har utfört mätningar.
+
+Datan är hämtad från @sgu.
+
+**Färgskala:**
+
+-   Röda nyanser = sjunkande grundvattennivå (negativ trend).
+
+-   Gröna nyanser = stigande grundvattennivå (positiv trend).
+
+-   Svart = otillräckligt dataunderlag för trendberäkning.
+
+Mörkare färger indikerar större förändringstakt.
+
+**Information i popup:**
+
+Klicka på en punkt för att se:
+
+-   Senaste mätningens datum och värden (meter under rörets överkant, över havet och under markytan).
+
+-   Beräknad trend (meter/år) baserad på linjär regression över hela mätperioden.
+
+-   Medelvärde för alla mätningar på stationen.
+
+-   Första och senaste mätdatum samt totalt antal mätningar.
+
+-   Mätmetod och eventuella anmärkningar.
+
+**Filtrering:**
+
+Mätpunkterna är grupperade efter när den senaste mätningen gjordes (innan 2010 eller 2010 eller senare), vilket kan användas för att identifiera aktiva respektive inaktiva stationer.
+
+::: {.callout-note collapse="true"}
+## Teknisk information: Trendberäkning
+
+Trenden i grundvattennivå beräknas genom linjär regression för varje mätstation som uppfyller följande kriterier:
+
+-   Minst **10 giltiga mätningar** av grundvattennivå (m ö.h.)
+-   Mätperiod på minst **5 år** (från första till senaste observation)
+
+**Beräkningsmetod:**
+
+1.  För varje station beräknas antalet dagar från första mätningen:
+
+```         
+   days = obsdatum - min(obsdatum)
+```
+
+2.  Linjär regression körs med grundvattennivå som responsvariabel:
+
+```         
+   lm(grundvattenniva_m_o_h ~ days)
+```
+
+3.  Lutningskoefficienten konverteras till meter per år:
+
+```         
+   slope_m_per_year = koefficient × 365
+```
+
+**Tolkning:** - Positiv lutning (grön) = grundvattennivån stiger över tid - Negativ lutning (röd) = grundvattennivån sjunker över tid - Värdet anger genomsnittlig förändring i meter per år
+
+**Begränsningar:** - Metoden antar linjär förändring och fångar inte säsongsvariation eller icke-linjära trender - Stationer med färre än 10 mätningar eller kortare mätperiod än 5 år exkluderas från trendanalysen (visas som svarta punkter)
+:::
+
+```{r}
+#| fig-cap: ''
+#| label: fig-grundniva
+
+grundvattenniva()
+```
+
+::: source-note
+Källa: @sgu
+:::
+
+Trenden är för de flesta mätpunkterna är väldigt liten och väldigt nära 0, men mätningarna från "Station 73_138" i Enköping sticker ut med en skillnad på -0,31 meter per år för de totalt 26 mätningarna och Station 73_157 som har en ökning på 0,21 meter per år uppdelat på 11 mätningar mellan 1987-02-12 och 1995-06-06. Dessa mätningar och trender ska ses med försiktighet, det senaste värdet från en mätning ses genom att klicka på stationerna i figuren.

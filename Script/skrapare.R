@@ -22,12 +22,12 @@
 
 
 
-# https://www.rus.se/regional-arlig-uppfoljning/uppsala-lan-2024/
+# https://www.rus.se/regional-arlig-uppfoljning/uppsala-lan/
 
 rus_reader <- function(lan='uppsala-lan', year='2024'){
   
   # URL till sidan
-  url <- paste0("https://www.rus.se/regional-arlig-uppfoljning/",lan,"-",year,"/")
+  url <- paste0("https://www.rus.se/regional-arlig-uppfoljning/",lan,"/")
   
   # Ladda sidan
   page <- read_html(url)
