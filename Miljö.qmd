@@ -38,6 +38,8 @@ source("Script/create_tables.R")
 
 Denna rapport redovisar miljötillståndet i Uppsala län och bygger på Länsstyrelsens regionala uppföljning. Syftet är att ge en samlad bild av länets miljökvalitet, naturresurser och hållbarhetsarbete på kommunnivå, samt att följa upp utvecklingen mot nationella miljökvalitetsmål.
 
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+
 ```{r}
 #| fig-cap: "Miljö 2 Liljeröd"
 #| label: fig-Miljö_2_Liljeröd_RGB

@@ -58,3 +58,11 @@ slatt_mark()
 # vatten
 eko_vatten()
 
+avgift_vatten()
+
+inv_vatten()
+
+netto_vatten()
+
+grundvatten_kolada()
+

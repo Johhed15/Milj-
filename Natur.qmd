@@ -41,6 +41,8 @@ Denna rapport ger en samlad bild av länets natur- och miljöförhållanden. Hä
 
 Avsnittet omfattar också statusen i sjöar och vattendrag samt kvalitet och nivåer i grundvattnet. Dessa indikatorer belyser ekosystemens tillstånd och används för uppföljning av flera nationella miljökvalitetsmål, bland annat Ett rikt växt- och djurliv, Ett rikt odlingslandskap och Grundvatten av god kvalitet.
 
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
+
 ```{r}
 #| fig-cap: "Natur"
 #| label: fig-Natur
@@ -119,7 +121,7 @@ Data är hämtat från @skogsstyrelsen.
 kalmark()
 ```
 
-Sett till medianen för sammanhängande kalmarksareal så ligger länet nära mitten av länen i datat, trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms och Södermanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
+Sett till medianen för sammanhängande kalmarksareal så ligger länet precis över medianen för hela landet. Trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms, Dalarnas län, Gotlands län, Södermanlands län och Västmanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
 
 ## Ekologisk brukad åkermark
 
@@ -351,8 +353,151 @@ knitr::include_graphics("Figurer/eko_vatten_Vattendrag.svg")
 
 Endast fyra kommuner i länet har data för vattendrag i hänsyn till ekologisk status, Heby har även här den högsta andelen som klassas ha god ekologisk status på över 15 %. Östhammar är den kommun som har lägst andel av de fyra kommunerna på runt 3 %.
 
+# Vatten
+
+I detta avsnitt analyseras vattenanvändning, grundvattenkvalitet och ekonomiska aspekter av vattenförsörjning och avloppshantering på läns- och kommunnivå. Genom att kombinera miljömässiga och ekonomiska indikatorer ges en övergripande bild av vattenresursernas status och förvaltning i länet.
+
+## Vattenanvändning
+
+Detta kapitel belyser hur vattenanvändningen per invånare utvecklats över tid, både totalt och uppdelat på olika användningsområden. Vattenanvändning är en central indikator för att förstå resursutnyttjande och hållbarhet, särskilt i relation till befolkningsutveckling, näringslivets struktur och regionala skillnader. Genom att studera utvecklingen över tid och jämföra länets regioner med varandra ges en bild av både långsiktiga trender och skillnader mellan olika typer av användning.
+
+Vattenanvändningen presenteras som kubikmeter per invånare. Data är hämtat från @kolada som hänvisar till @scb_statistikdatabasen.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-vatten_anvand
+#| fig-alt: "Figuren visar vattenanvändningen i kubikmeter per invånare för landets alla regioner, från 2010 till 2024."
+#| fig-height: 7
+
+vattenanvändning()
+```
+
+Region Uppsala har en av de lägsta vattenanvändningarna i Sverige sett till kubikmeter per invånare, regioner som har liknande resultat är Västmanland, Jönköping och Skåne. Oavsett vilken kategori som undersöks så har länet låga nivåer.
+
+Vid mätningen 2015 så syns det en tydlig nedgång av vattenanvändningen i länet, något som inte syns i alla län, framför allt inte när det gäller övrig användning. Industri är den kategori som har högst vattenanvändning i länet, som vid senaste mätning använde runt dubbelt så mycket vatten som hushållen i länet.
 
 
-# mer vatten ?
+## Grundvattenkvalitet
 
-https://www.smhi.se/forskning/modeller-och-data/s-hype
+Detta delkapitel redovisar andelen grundvattenförekomster med god kemisk och kvantitativ status, uttryckt som procent av det totala antalet grundvattenförekomster i respektive kommun. Grundvattenförekomster som sträcker sig över flera kommuner eller län inkluderas i beräkningen för samtliga kommuner eller län som de har koppling till.
+
+Klassificeringen av grundvattenförekomster sker successivt inom ramen för fleråriga förvaltningscykler. De värden som redovisas i Kolada uppdateras löpande under respektive cykel och utgör preliminära resultat fram till dess att cykeln avslutas, varefter det slutgiltiga utfallet fastställs retroaktivt. Detta innebär att samtliga värden, med undantag för det sista året i varje cykel, bör tolkas som preliminära.
+
+Den första förvaltningscykeln avser perioden 2004–2009, men för denna cykel saknas uppgifter på länsnivå. Cykel 2 omfattar perioden 2010–2016 och cykel 3 perioden 2017–2021.
+
+Data är hämtat från @kolada som hänvisar vidare till @viss och @lansstyrelsen.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-grundvatten
+#| fig-alt: "Figuren visar Antal grundvattenförekomster med god kemisk och kvantitativ status i procent av antal grundvattenförekomster totalt i länets kommuner."
+
+knitr::include_graphics("Figurer/grundvatten_kolada.svg")
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/grundvatten_kolada.svg" download>Som SVG</a>
+      <a href="Figurer/grundvatten_kolada.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+I både Älvkarleby och Håbo så har alla grundvattenförekomster god kemisk och kvantitativ status för alla 3 cykler. I Tierp, Uppsala, Heby, Knivsta och Östhammar så syns det en minskande andel vid mätningarna i cykel 3 (2017 - 2021).
+
+Lägst andel i länet hittas i Östhammar där runt 36 % av alla grundvattenförekomster anses ha god kemisk och kvantitativ status.
+
+
+## Avgift för vatten och avlopp
+
+Avgiften för vatten och avlopp speglar kommunernas kostnader för drift, underhåll och investeringar i den vattenrelaterade infrastrukturen. Kostnaden avser avgift för vatten och avlopp uttryckt i kronor per kvadratmeter och år, inklusive moms, för en typfastighet i kommunen. Typfastigheten utgörs av ett flerbostadshus med en boendeyta om 1 000 kvadratmeter, där kostnaden beräknas utifrån ett årligt vattenbehov motsvarande 2 000 kubikmeter.
+
+Data är hämtat från @kolada som hänvisar till @nilsholgersson.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-avgift_vatten
+#| fig-alt: "Figuren visar avgiften enligt Nils holgersson-modellen för vatten och avlopp för alla kommuner i länet från 2010 till 2025."
+
+knitr::include_graphics("Figurer/avgift_vatten.svg")
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/avgift_vatten.svg" download>Som SVG</a>
+      <a href="Figurer/avgift_vatten.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Avgiften för vatten och avlopp i en typfastighet har sedan 2010 ökat hos alla kommuner i länet, men Älvkarleby hade sitt högsta värde 2015 och har haft runt samma avgift sedan 2016. Resterade kommuner i länet har haft kraftiga avgiftsökningar de senaste åren.
+
+Högst värden hittas i Håbo och Östhammar på över 130 kronor/kvadratmetern. De lägsta, som ligger precis under 90 kr/kvm, finns i Uppsala kommun och Älvkarleby. 5 av länets 8 kommuner har en avgift över 120 kr/kvm.
+
+## Investering i vattenförsörjning
+
+Investeringar i vattenförsörjning och avloppshantering är avgörande för att säkerställa en långsiktigt hållbar och robust vatteninfrastruktur. Dessa investeringar påverkas av faktorer som befolkningstillväxt, tekniskt underhållsbehov och nya miljö- och kvalitetskrav. Med investeringsutgifter avses exempelvis inköp av mark, byggnader och tekniska anläggningar, inköp av maskiner och inventarier samt entreprenader och konsulter. Investeringarna avser ej investeringar gjorda av kommunala bolag.
+
+Data är hämtat från @kolada som hänvisar vidare till @scb_statistikdatabasen.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-inv_vatten
+#| fig-alt: "Figuren visar investeringsutgifter för vattenförsörjning och avloppshantering för alla kommuner i länet med värden över 0, från 2010 till 2024."
+
+knitr::include_graphics("Figurer/inv_vatten.svg")
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/inv_vatten.svg" download>Som SVG</a>
+      <a href="Figurer/inv_vatten.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Av de kommuner som gjort investeringar som ej är gjorda av kommunala bolag så har Enköping och Håbo de högsta utgifterna för perioden, där en stor del av investeringarna skett de senaste åren.
+
+Sedan 2018 så är det endast tre kommuner i länet som har en investeringsutgift på vattenförsörjning och avloppshantering som inte är från ett kommunalt bolag.
+
+## Nettokostnad
+
+Detta avsnitt redovisar nettokostnaden för kommunal vattenförsörjning och avloppshantering per invånare, beräknad som nettokostnad dividerad med folkmängden den 31 december respektive år. Med nettokostnad avses bruttokostnader minus bruttointäkter för produktion och distribution av vatten- och avloppstjänster, inklusive dagvattenhantering. Uppgifterna omfattar endast verksamhet som bedrivs i förvaltningsform.
+
+Data är hämtat från @kolada som hänvisar till @sbcraken.
+
+```{r}
+#| fig-cap: ''
+#| label: fig-netto_vatten
+#| fig-alt: "Figuren visar nettokostnaden för vattenförsörjning och avloppshantering för alla kommuner i länet, från 2010 till 2024."
+
+knitr::include_graphics("Figurer/netto_vatten.svg")
+```
+
+```{=html}
+<div style="margin-top:0.5rem;">
+  <div class="download-dropdown">
+    <span class="download-btn">Ladda ner</span>
+    <div class="download-menu">
+      <a href="Figurer/netto_vatten.svg" download>Som SVG</a>
+      <a href="Figurer/netto_vatten.png" download>Som PNG</a>
+    </div>
+  </div>
+</div>
+```
+
+Enköping har både den lägsta och högsta nettokostnaden i länet under perioden, där den största skillnaden mellan 2 efterföljande år är över 500 kr/invånare (2022-2023). Heby har en stabil nettokostnad på runt 100 kr/invånare för vattenförsörjning och avloppshantering under perioden. Tierp och Östhammar saknar data efter 2020, men båda kommunerna har väldigt låga värden för flera av åren under perioden.
+
+Flera av länets kommuner redovisar en nettokostnad på noll i data. Detta indikerar sannolikt att uppgifter för hela eller delar av nettokostnaden saknas, exempelvis på grund av att vattenförsörjning och avloppshantering inte bedrivs i förvaltningsform utan i bolagsform, vilket innebär att kostnaderna inte ingår i denna redovisning.

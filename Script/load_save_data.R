@@ -380,20 +380,64 @@ print('Nedladdning av "df_kalmarksareal.csv" har genomförts')
 }
 
 
-################# GEOdata atom (Används ej för tillfället, bristfällig kvalitet) #############
+
+########### Vatten kolada ###########
+{ # Avgift för vatten och avlopp inkl. moms för typfastighet enligt Nils Holgersson-modellen, kr/kvm
+  df_avgift <- search_and_fetch_kolada("Avgift för vatten och avlopp inkl. moms för typfastighet")
+  df_avgift <- df_avgift %>% filter(year >= 2010)
+  write.csv(df_avgift, "Data/avgift_vatten_NHM.csv", row.names = F)
+  print('Nedladdning av "avgift_vatten_NHM.csv" har genomförts')
+}
+
+{ #   Investeringsutgifter vattenförsörjning och avloppshantering, kr/inv
+  df_avgift <- search_and_fetch_kolada("Investeringsutgifter vattenförsörjning och avloppshantering, kr/inv")
+  df_avgift <- df_avgift %>% filter(year >= 2010)
+  write.csv(df_avgift, "Data/investering_vatten.csv", row.names = F)
+  print('Nedladdning av "investering_vatten.csv" har genomförts')
+}
+
+{ #   Vattenanvändning totalt, senaste mätning, kbm/inv
+  df_anvandning <- search_and_fetch_kolada("Vattenanvändning", kommunkod='Alla')
+  #unique(df_anvandning$title)
+  df_anvandning <- df_anvandning %>% filter(year >= 2010)
+  write.csv(df_anvandning, "Data/vattenanvandning.csv", row.names = F)
+  print('Nedladdning av "vattenanvandning.csv" har genomförts')
+}
+
+{ #    Nettokostnad vattenförsörjning och avloppshantering, kr/inv
+  df_anvandning <- search_and_fetch_kolada("Nettokostnad vattenförsörjning och avloppshantering, kr/inv", match = 0)
+  #unique(df_anvandning$title)
+  df_anvandning <- df_anvandning %>% filter(year >= 2010)
+  write.csv(df_anvandning, "Data/nettokostnad_vatten.csv", row.names = F)
+  print('Nedladdning av "nettokostnad_vatten.csv" har genomförts')
+}
+
+{ # Grundvattenförekomster med god kemisk och kvantitativ status, andel (%)
+  df_grund <- search_and_fetch_kolada("Grundvattenförekomster med god kemisk och kvantitativ status, andel (%)", match = 0)
+  #unique(df_anvandning$title)
+  df_grund <- df_grund %>% filter(year >= 2004)
+  write.csv(df_grund, "Data/df_grund.csv", row.names = F)
+  print('Nedladdning av "df_grund.csv" har genomförts')
+}
+
+
+
+
+
+################# GEOdata atom  #############
 # Denna funktion är endast skapad för att inte köra koden nedan, kör varje del manuellt om ny data finns tillgänglig.
 #geo_data <- function(){
 ############# Skyddade områden: naturvårdsområden ##########
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/dd8371a0-f692-44e3-bd0b-25de8dee8906
 #load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/ps/SE_ProtectedSites_serviceFeed.xml',file_path ="Data/ProtectedSites")
 
-########### Produktionsanläggningar ########## 
+########### Produktionsanläggningar (Används ej för tillfället, bristfällig kvalitet)########## 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/354cb6ff-b2e5-4945-8b4e-9df1c8c401c8
 #Produktionsanläggningar, rapportering 2021 (EU Registry on industrial sites - 2010/75/EU samt 166/2006). Gäller data från år 2020.
 #load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/pf/SE_PF_EURegistry_serviceFeed.xml',file_path ="Data/prodanlagg")
 
 
-########### Biogeografiska regioner: ########## 
+########### Biogeografiska regioner:(Används ej för tillfället, bristfällig kvalitet) ########## 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/b166b68e-1305-4acc-b3de-a4f9cfa22faf
 #load_geodata_atom(url='https://geodata.naturvardsverket.se/atom/inspire/br/SE_BR_Biogeoregion_serviceFeed.xml',file_path ="Data/Biogeografiska")
 #}
@@ -401,7 +445,7 @@ print('Nedladdning av "df_kalmarksareal.csv" har genomförts')
 
 # Denna funktion är endast skapad för att inte köra koden nedan, kör varje del manuellt om ny data finns tillgänglig.
 
-############# grundvattenkvalitet ###########
+############# grundvattenkvalitet(Används ej för tillfället, bristfällig kvalitet) ###########
 {
 # Länk tagen från hemsidan 
 # https://www.geodata.se/geodataportalen/srv/swe/catalog.search#/metadata/20b36a27-3a24-4a61-a3e0-4f533e76a60b
@@ -431,7 +475,7 @@ print('Nedladdning av "df_kalmarksareal.csv" har genomförts')
 }
 
 
-############## GRundvattennivå ##########
+############## GRundvattennivå(Används ej för tillfället, bristfällig kvalitet) ##########
 # https://www.sgu.se/produkter-och-tjanster/geologiska-data/grundvatten--geologiska-data/grundvattennivaer/
 # https://api.sgu.se/oppnadata/grundvattennivaer-observerade/ogc/features/v1/openapi?f=text%2Fhtml
 {

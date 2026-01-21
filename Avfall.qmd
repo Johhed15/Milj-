@@ -39,7 +39,7 @@ source("Script/create_tables.R")
 
 Denna rapport ger en översikt över avfallshanteringen i kommunerna i Uppsala län. Fokus ligger på mängder avfall som uppstår, hur stor andel som samlas in för materialåtervinning, hur mycket som deponeras samt kostnader kopplade till avfallshämtning och hantering. Syftet är att skapa en tydlig bild av både volymer och effektivitet i kommunernas avfallshantering samt att möjliggöra jämförelser mellan kommunerna.
 
-
+Alla interaktiva grafer kan laddas ned genom att trycka på ![Nerladdningsknapp](Figurer/download_graph.png){width="120px"}. Då sparas just den bild som visas, med exempelvis den valda regionen. Genom att dubbelklicka på kommunnamn i grafens legend så zoomas den kommunen in för en mer detaljerad vy(flera kan väljas samtidigt).
 
 ```{r}
 #| fig-cap: "Miljö 8 Liljeröd"
