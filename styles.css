@@ -1,4 +1,4 @@
-/* ==== Tema-variabler (behåll gärna) ==== */
+/* ==== Tema-variabler ==== */
 :root{
   --accent:#B81867;
   --accent-2:#a61c6e;
@@ -8,8 +8,6 @@
   --bg-soft:#f3dce8;
   --border:#e6e6e6;
   --maxw:1200px;
-  
-  --contentw:1100px;
 }
 
 /* Bas */
@@ -24,7 +22,7 @@ body{
 
 /* ==== HEADER / NAVBAR (Quarto) ==== */
 #quarto-header .navbar{
-  background:#B81867 !important;   /* din färg */
+  background:#B81867 !important;
 }
 #quarto-header .navbar .navbar-brand,
 #quarto-header .navbar .nav-link{
@@ -41,14 +39,16 @@ body{
   border-color:rgba(255,255,255,.6);
 }
 #quarto-header .navbar-toggler-icon{
-  filter:invert(1) grayscale(1); /* gör hamburgaren vit */
+  filter:invert(1) grayscale(1);
 }
 
-/* Låt själva Quarto-grid fylla bredden (ingen smal container) */
-.quarto-container{
-  max-width: 100%;
+/* Begränsa maxbredd på innehåll */
+.quarto-container, .page-columns{
+  max-width: var(--maxw);
+  margin-left:auto; margin-right:auto;
 }
-/* ==== SIDEBAR (vänster, Quarto) ==== */
+
+/* ==== SIDEBAR ==== */
 #quarto-sidebar{
   background:var(--bg-soft);
   border-right:2px solid var(--border);
@@ -63,7 +63,7 @@ body{
 }
 #quarto-sidebar a:hover{ text-decoration:none; }
 
-/* ==== TOC / marginal (höger, Quarto) – valfritt pimpa aktiva länkar ==== */
+/* ==== TOC / marginal ==== */
 #quarto-margin-sidebar .active > a,
 #quarto-margin-sidebar a.active{
   font-weight:700; color:var(--accent);
@@ -102,7 +102,7 @@ pre{
 .quarto-title-block{ margin-bottom:.5rem !important; }
 .content > :first-child{ margin-top:0 !important; }
 
-/* ==== Panel-tabset – lite styling (Quarto sköter funktionaliteten) ==== */
+/* ==== Panel-tabset ==== */
 .panel-tabset > .nav-tabs{
   border-bottom:1px solid #dee2e6; margin-bottom:1rem; gap:.5rem;
 }
@@ -178,3 +178,109 @@ pre{
 .download-dropdown:hover .download-menu {
   display: block;
 }
+
+.download-wrap{
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end; /* höger */
+  width: 100%;
+}
+
+
+/* =====================================================
+   Floating kontakt-widget (chatt-ikon + kontaktbox)
+   ===================================================== */
+
+/* Yttersta behållaren som håller både knapp och ruta */
+.contact-widget {
+  position: fixed;          /* Ligger fast på skärmen även vid scroll */
+  right: 20px;              /* Avstånd från högerkanten */
+  bottom: 20px;             /* Avstånd från nederkanten */
+  z-index: 10000;            /* Säkerställer att den ligger över annat innehåll */
+  
+  user-select: none;        /* Förhindrar att text utanför rutan markeras */
+}
+
+
+/* Den runda chatt-knappen (💬) */
+.contact-button {
+  width: 58px;              /* Knappens bredd */
+  height: 58px;             /* Knappens höjd */
+  border-radius: 50%;       /* Gör knappen helt rund */
+  background: var(--accent);/* Färg från temavariabel */
+  color: #fff;              /* Vit ikon/text */
+  display: flex;            /* Centrerar innehållet */
+  align-items: center;      /* Vertikal centrering */
+  justify-content: center;  /* Horisontell centrering */
+  font-size: 2rem;          /* Storlek på 💬-ikonen */
+  cursor: pointer;          /* Visar att knappen är klickbar */
+  box-shadow: 0 6px 16px rgba(0,0,0,.2); /* Skugga för “flytande” känsla */
+  
+  user-select: none;        /* Förhindrar textmarkering på knappen */
+}
+
+/* Själva kontakt-rutan (dold tills man klickar) */
+.contact-widget .floating-contact-box {
+  display: none;            /* Dold som standard */
+  position: absolute;       /* Positioneras relativt .contact-widget */
+  bottom: 75px;             /* Placeras ovanför chatt-knappen */
+  right: 0;                 /* Högerjusterad mot knappen */
+  width: 360px;             /* Bredd på rutan */
+  min-height: 50px;         /* valfri minhöjd */
+  padding: 14px 14px;       /* Inre marginaler */
+  background: #fff;         /* Vit bakgrund */
+  border: 1px solid var(--border); /* Diskret ram */
+  border-radius: 10px;      /* Rundade hörn */
+  padding-left: 16px;
+  padding-right: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12); /* Skugga */
+  font-size: 1rem;          /* Textstorlek */
+  line-height: 1.4;         /* Radavstånd */
+  color: var(--text);       /* Textfärg från tema */
+  z-index: 1000000;
+  
+  user-select: text;        /* Tillåter markering och kopiering av text */
+  cursor: text;             /* Visar textmarkör vid hover */
+  overflow: visible;       /* Stoppar markering utanför */
+  contain: layout paint;  /* Isolerar rutan från övrig layout */
+  pointer-events: auto;
+}
+
+
+/* Den osynliga checkboxen som styr öppna/stäng */
+#contact-toggle {
+  position: absolute;       /* Tas ur flödet */
+  opacity: 0;               /* Helt osynlig */
+  pointer-events: none;     /* Går inte att klicka direkt */
+}
+
+/* När checkboxen är ikryssad → visa kontakt-rutan */
+#contact-toggle:checked ~ .floating-contact-box {
+  display: block;
+}
+
+
+/* Enkel fade-in-animation när rutan visas */
+.contact-widget .floating-contact-box {
+  animation: fadeIn .2s ease-out;
+}
+
+/* Definition av fade-in-animationen */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dölj hela widgeten på små skärmar (mobil) */
+@media (max-width: 768px) {
+  .contact-widget {
+    display: none;
+  }
+}
+

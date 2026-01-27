@@ -462,16 +462,16 @@ hallbarhetsindex <- function(){
 
 ########################## Markanvändning #####################
 
+
 karta_skog <- function(){
   # Läser in data
-  px_markanvandning <- read.csv('Data/df_markanvandning.csv')  
+  px_markanvandning <- read.csv('Data/df_markanvandning.csv')  %>% filter(vart.5.e.år== max(vart.5.e.år))
   shapefile_path <- "Data/Kommun_Sweref99TM/Kommun_Sweref99TM.shp"
   
   suppressMessages(
     suppressWarnings(
       kommun_shape <- st_read(shapefile_path, quiet = TRUE)
     ))
-  
   # Tar ut uppsala län
   kommun_shape <- kommun_shape[grep(paste0("^",lanskod), kommun_shape$KnKod), ]
   
@@ -485,7 +485,7 @@ karta_skog <- function(){
   
   # Popup text med data för alla variabler
   popup <-  kommun_shape_leaflet %>%
-    group_by(KnKod,vart.5.e.år) %>%
+    group_by(KnKod) %>%
     summarise(
       popup = paste0(
         unique(KnNamn),' år ',unique(vart.5.e.år),"<br>",
@@ -505,14 +505,8 @@ karta_skog <- function(){
   
   # Lägger in popup text
   kommun_shape_leaflet <- kommun_shape_leaflet %>%
-    left_join(popup, by = c("KnKod", 'vart.5.e.år'))
+    left_join(popup, by = c("KnKod"))
   
-  # Gör 2 av 3 popups tomma per (varje kommun har 3, räcker att 1 visas)
-  for (i in 1:nrow(kommun_shape_leaflet)) {
-    if (i %% 3 != 0) {
-      kommun_shape_leaflet$popup[i] <- " "
-    }
-  }
   
   
   # Layer för namnen på kommunerna
@@ -1076,7 +1070,7 @@ netto_vatten <- function(){
     geom_line(linewidth=2) + geom_point(size=3)+
     scale_color_manual(values=kommun_colors)+
     labs(title= str_wrap(paste(unique(df$title)),width=50),
-         x = "",y='Kr/inv', caption = 'Källa: SCB Räkenskapssammandrag',
+         x = "",y='Nettokostnad (kr/inv)', caption = 'Källa: SCB Räkenskapssammandrag',
          color="")+ 
     theme(axis.text.x = element_text(angle = 90),
           text = element_text(family = "sourcesanspro", size = 14),

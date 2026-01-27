@@ -2,102 +2,110 @@
 <html lang="sv">
 <head>
   <meta charset="utf-8">
-  <!-- TODO: Byt sidtitel till rapportens namn -->
   <title>Start – miljo</title>
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- TODO: Länka till din globala sajt-CSS (byt filnamn/sökväg vid behov) -->
   <link rel="stylesheet" href="styles.css">
-  <!-- TODO: Landningssidans extra-stil (kan tas bort om allt ligger i styles.css) -->
   <link rel="stylesheet" href="landing.css">
 </head>
 
-<!-- TIP: body class används i CSS för att styra just landningssidan -->
-<body class="landing">
 
-  <!-- ================== HERO ==================
-       TODO: Ändra rubrik, ingress och knappar (text + mål-länkar).
-       Länkarna ska peka på genererade sidor, t.ex. inledning.html (från inledning.qmd)
-  ============================================ -->
-  <section class="hero">
-    <!-- TODO: Rapportnamn + år -->
-    <h1>Läget i Länet Rapport - Miljö 2025</h1>
+<body class="landing-clean">
 
-    <!-- TODO: Kort ingress/”pitch” för rapporten (1–2 meningar) -->
-    <p>Rapporten ger en övergripande bild av länets miljötillstånd, från länsstyrelsens bedömningar av miljökvalitetsmålen till kommunernas resultat inom miljökvalitet och hållbarhet. </p>
-  <!-- =============== KORT/KORTLISTA =================-->
-    <div class="cta">
-      <!-- TODO: Justera länkar/texter. Lägg till/ta bort knappar efter behov. -->
-    <h2 class="cta-title">Snabblänk</h2>
-      <div class="cta-links">
-      <a href="Miljö.html#kommunindex">Hoppa till kommunindex</a>
+  <!-- ================== HERO =============== -->
+  <header class="hero-full" id="top">
+    <div class="hero-inner">
+      <p class="hero-tag">Rapport 2026</p>
+
+      <h1>
+        <span class="title-top">Läget i Länet</span>
+        <span class="title-bottom">Miljön 2026 </span>
+      </h1>
+    
+     <p class="hero-lead">
+      Rapporten ger en övergripande bild av länets miljötillstånd, från länsstyrelsens bedömningar av miljökvalitetsmålen till kommunernas resultat inom miljökvalitet och hållbarhet.
+     </p>
+    
+      <div class="hero-cta">
+        <a class="btn primary" href="Miljö.html">Rapport del 1</a>
+        <a class="btn ghost" href="#snabbfakta">Utforska ↓</a>
+      </div>
+
+      <p class="hero-meta">
+        Publicerad: Mars 2026. Regional utveckling
+      </p>
     </div>
-  </section>
-
-  <!-- =============== KORT/KORTLISTA =================
-       TODO: Lägg till ett "card"-block per delkapitel/tema.
-       - h3: kort rubrik
-       - första p: kort beskrivande text
-       - länk: pekar till respektive undersida (t.ex. arbetsmarknaden.html)
-       Tips: duplicera <div class="card">…</div> för fler rutor.
-  ==================================================== -->
-  <div class="wrap">
-    <div class="grid">
-
-      <!-- ====== KORT 1: Inledning ====== -->
-      <div class="card">
-        <!-- TODO: Delrubrik -->
-        <h3>Miljö</h3>
-        <!-- TODO: Kort beskrivning av vad läsaren hittar här -->
-        <p>En samlad genomgång av miljökvalitetsmålen, miljöindex och hållbarhetsindikatorer i länet.</p>
-        <!-- TODO: Länk till sidan (se till att filen genereras av Quarto) -->
-        <p><a href="Miljö.html">Öppna →</a></p>
-      </div>
-
-      <!-- ====== KORT 2: Avfall ====== -->
-      <div class="card">
-        <h3>Avfallsrapport</h3>
-        <p>En översikt över avfallsmängder, materialåtervinning och kommunernas kostnader för avfallshantering </p>
-        <p><a href="Avfall.html">Öppna →</a></p>
-      </div>
+  </header>
+  
+  <main>
       
-      <!-- ====== KORT 3: Natur ====== -->
-      <div class="card">
-        <h3>Naturrapport</h3>
-        <p>En sammanfattning av markanvändning, skyddad natur och status i länets sjöar och vattendrag</p>
-        <p><a href="Natur.html">Öppna →</a></p>
-      </div>
-      
-      <!-- ====== EXEMPEL PÅ FLER KORT ======
-      <div class="card">
-        <h3>Utbildning</h3>
-        <p>Gymnasiet, YH, högskola.</p>
-        <p><a href="utbildning.html">Öppna →</a></p>
-      </div>
+  <!-- ===== SNABBFAKTA ===== -->
+    <section class="section" id="snabbfakta">
+      <div class="container">
+        <h2 class="section-title">Snabbfakta 2026</h2>
 
-      <div class="card">
-        <h3>Näringsliv</h3>
-        <p>Företagsstruktur & branscher.</p>
-        <p><a href="naringsliv.html">Öppna →</a></p>
+        <div class="grid cards-mini">
+          <article class="card">
+            <h3>Länsstyrelsen bedömningar</h3>
+            <p>Endast målet om "Bara naturlig försurning" anses kunna uppnås til 2030.</p>
+          </article>
+
+          <article class="card">
+            <h3>Länsstyrelsen bedömningar</h3>
+            <p>4 mål anses ha en negativ trend.</p>
+          </article>
+
+        
+        </div>
       </div>
-      ======================================= -->
+    </section>
 
-    </div>
-  </div>
+    <!-- ===== RAPPORTENS DELAR ===== -->
+    <section class="section" id="delar">
+      <div class="container">
+        <h2 class="section-title">Rapportens kapitel</h2>
 
-  <!-- ============== EXTRA TIPS =================
-    • Filnamn:
-      - Om du kör Quarto: inledning.qmd → inledning.html vid render.
-      - Säkerställ att länkarna ovan matchar de genererade .html-filerna.
-    • Navigation:
-      - Om du har en global navbar via _quarto.yml används den parallellt.
-    • Bilder i hero:
-      - Sätt bakgrundsbild via CSS i landing.css, t.ex.:
-        .landing .hero { background: url('img/hero.jpg') center/cover no-repeat; }
-    • Footers/loggor:
-      - Lägg längst ned innan </body> eller styra via CSS.
-  ============================================== -->
+        <div class="grid cards-parts">
+          <article class="card part">
+            <h3>Miljö</h3>
+            <p>En samlad genomgång av miljökvalitetsmålen, miljöindex och hållbarhetsindikatorer i länet.</p>
+            <a class="link" href="Miljö.html">Öppna →</a>
+          </article>
+
+          <article class="card part">
+            <h3>Avfall</h3>
+            <p>En översikt över avfallsmängder, materialåtervinning och kommunernas kostnader för avfallshantering.</p>
+            <a class="link" href="Avfall.html">Öppna →</a>
+          </article>
+
+          <article class="card part">
+            <h3>Natur</h3>
+            <p>En sammanfattning av markanvändning, skyddad natur och status i länets sjöar och vattendrag.</p>
+            <a class="link" href="Natur.html">Öppna →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== OM RAPPORTEN ===== -->
+    <section class="text-section" id="om">
+      <div class="container text-narrow">
+        <h2 class="section-title">Om rapporten</h2>
+
+        <p>
+          <strong>Läget i Länet – Miljö 2026</strong> .......
+        </p>
+
+        <p class="meta">
+          Publicerad: mars 2026. Nästa uppdatering planeras till våren 2027.<br>
+          Kontakt: <a class="inline-link" href="mailto:regionalutveckling.analys@regionuppsala.se">regionalutveckling.analys@regionuppsala.se</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>

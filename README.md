@@ -23,6 +23,8 @@ Detta är ett Quarto-projekt som visualiserar och analyserar miljön i Uppsala l
 
 -   Här hittas också kommentarer om eventuell manuell nedladdning av filer vilket för denna rapport är:
 
+    - Ställa in rätt år i skrapare och create_save_plots, året som ska stå är alltså det som gäller för datan på hemsidan: "https://www.rus.se/regional-arlig-uppfoljning/uppsala-lan/"
+
     -   "data-och-statistik-fororenade-omraden-fororenade-omraden-.csv" laddas ned från: https://www.naturvardsverket.se/data-och-statistik/fororenade-omraden/fororenade-omraden/ (Kom ihåg att ladda ned som "csv")
 
     -   geo_data() tydligt markerad funktion i load_save_data() och i run_all_functions()

@@ -1,172 +1,189 @@
-/* =========================================================
-   landing.css – stil för den fristående startsidan (index.html)
-   ========================================================= */
+/* Färger */
+:root{
+  --magenta: #B81867;
+  --bg: #f2f2f5;
+  --card: #ffffff;
+  --text: #111;
+  --muted: #4b4b4b;
+  --line: #e3e3ea;
+  --shadow: 0 12px 30px rgba(0,0,0,.10);
+  --radius: 18px;
+  --maxw: 1100px;
+}
 
-.landing {
-  /* Temavariabler för startsidan */
-  --hero-bg: #B81867;         /* bakgrundsfärg i hero-blocket */
-  --hero-fg: #fff;            /* textfärg i hero-blocket */
-  --maxw: 1100px;             /* max bredd på innehålls-wrap */
+html { scroll-behavior: smooth; }
+
+body.landing-clean{
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* =========================
-   HERO – stor toppsektion
-   ========================= */
-.landing .hero {
-  background: var(--hero-bg);
-  color: var(--hero-fg);
-
-  /* Gör ytan längre ner:
-     - stor topp- och bottenpadding
-     - min-height mot viewporten
-     - centrerad vertikalt med flex  */
-  padding: clamp(3rem, 6vw, 6rem) 1.25rem clamp(6rem, 10vw, 10rem);
-  min-height: 62vh;                 /* höjden på blocket – justera efter smak */
-  display: flex;                    /* vertikal centrering */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-}
-
-/* Liten justering på mindre skärmar så att blocket inte blir för dominerande */
-@media (max-width: 700px) {
-  .landing .hero {
-    min-height: 52vh;
-    padding-bottom: clamp(4rem, 8vw, 7rem);
-  }
-}
-
-/* Titel i hero */
-.landing .hero h1 {
-  margin: 0 0 .6rem 0;
-  font-weight: 900;
-  /* lite större och mer elastiskt över olika skärmar */
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  letter-spacing: .2px;
-}
-
-/* Ingress i hero */
-.landing .hero p {
-  margin: 0 auto;
-  max-width: 60ch;                 /* läsbar radlängd */
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  opacity: .95;
-}
-
-/* CTA-knappar i hero */
-.landing .cta {
-  margin-top: 1.35rem;
-  display: inline-flex;
-  gap: .75rem;
-  flex-wrap: wrap;                 /* radbryt om det blir trångt */
-}
-
-/* Grundstil för knapparna (länkarna) */
-.landing .cta a {
-  text-decoration: none;
-  background: #fff;
-  color: #B81867;
-  padding: .7rem 1.05rem;
-  border-radius: 12px;
-  font-weight: 800;
-  box-shadow: 0 6px 18px rgba(0,0,0,.12);
-  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
-  display: inline-block;           /* större klickyta */
-}
-
-/* Hover/focus ger bättre affordance + tillgänglighet */
-.landing .cta a:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.16);
-}
-.landing .cta a:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 14px rgba(0,0,0,.12);
-}
-.landing .cta a:focus-visible {
-  outline: 3px solid rgba(255,255,255,.85);
-  outline-offset: 2px;
-}
-
-.cta-container {
-  display: flex;
-  align-items: center;      /* gör att de hamnar i samma höjd */
-  gap: 12px;                /* lite mellanrum mellan text och ruta */
-}
-
-/* =========================
-   HUVUD-INNEHÅLL
-   ========================= */
-.landing .wrap {
+/* Layout */
+.container{
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 2rem 1.25rem 3rem;
+  padding: 0 1.25rem;
 }
 
-/* Grid med kort */
-.landing .grid {
+.section{
+  padding: 3rem 0 1.5rem;
+}
+
+.text-section{
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.text-narrow{
+  max-width: 880px;
+}
+
+.section-title{
+  margin: 0 0 1.25rem 0;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 950;
+  color: var(--magenta);
+}
+
+/* HERO */
+.hero-full{
+  background: var(--magenta);
+  color: #fff;
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
+  place-items: center;
+  text-align: center;
+  padding: 3.5rem 1.25rem 4.5rem;
 }
 
-/* Kortens look & feel */
-.landing .card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.08);
-  padding: 1.1rem 1.25rem;
-  transition: transform .12s ease, box-shadow .12s ease;
+.hero-inner{
+  max-width: 980px;
 }
 
-.landing .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(0,0,0,.12);
+.hero-tag{
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,.55);
+  border-radius: 999px;
+  padding: .35rem .85rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  margin-bottom: 1rem;
 }
 
-/* Reducerad rörelse för de som föredrar det */
-@media (prefers-reduced-motion: reduce) {
-  .landing .cta a,
-  .landing .card {
-    transition: none;
-  }
+.title-top{
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 850;
 }
 
-
-
-
-.cta-container {
-  display: flex;
-  align-items: center;      /* gör att de hamnar i samma höjd */
-  gap: 12px;                /* lite mellanrum mellan text och ruta */
+.title-bottom{
+  display: block;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-weight: 950;
 }
 
-.cta-title {
-  margin: 0;
-  font-size: 1.4em;
+.hero-lead{
+  max-width: 70ch;
+  margin: 1.25rem auto;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
 }
 
-.cta-box {
-  background-color: #f0f4f8; /* ljus bakgrund */
-  border: 2px solid #0078d4; /* valfri färg (t.ex. blå kant) */
-  border-radius: 8px;
-  padding: 8px 14px;
+.hero-cta{
+  display:flex;
+  justify-content:center;
+  gap:.85rem;
+  flex-wrap:wrap;
 }
 
-.cta-box a {
-  text-decoration: none;
-  color: #0078d4;
-  font-weight: 500;
+.btn{
+  padding:.9rem 1.25rem;
+  border-radius:999px;
+  font-weight:900;
+  border:2px solid rgba(255,255,255,.55);
+  text-decoration:none;
 }
 
-.cta-box a:hover {
-  text-decoration: underline;
+.btn.primary{
+  background:#fff;
+  color:var(--magenta);
 }
 
-.cta-title {
-  display: flex;
-  align-items: center;
+.btn.ghost{
+  color:#fff;
+}
+
+.hero-meta{
+  margin-top:1rem;
+  opacity:.9;
+}
+
+/* Cards */
+.grid{
+  display:grid;
+  gap:1rem;
+}
+
+.cards-mini{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.cards-parts{
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:1.2rem 1.25rem;
+}
+
+.card h3{
+  margin-bottom:.4rem;
+  font-weight:950;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.part p{
+  margin-bottom:.75rem;
+}
+
+.link{
+  color:var(--magenta);
+  font-weight:900;
+  text-decoration:none;
+}
+
+.link:hover{
+  text-decoration:underline;
+}
+
+/* Text sections */
+.text-section p{
+  text-align:center;
+  line-height:1.75;
+}
+
+.meta{
+  color:#666;
+  font-size:.95rem;
+}
+
+.inline-link{
+  color:var(--magenta);
+  font-weight:800;
+  text-decoration:none;
+}
+
+.inline-link:hover{
+  text-decoration:underline;
 }

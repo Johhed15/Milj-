@@ -7,6 +7,7 @@ reference-section-title: "Källor"
 format: 
   html:
     self-contained: true
+    include-after-body: contact-widget.html # Knapp för kontakt
     language: sv 
     toc: true  # Innehållsförteckning
     toc_float: 
@@ -164,4 +165,4 @@ Data är hämtat från @naturvardsverket2024.
 riskomraden()
 ```
 
-I Uppsala län så finns det 71 områden i riskklass 1 och 319 i riskklass 2, jämförs länet mot resterande län så är det endast Skåne, Stockholm, Västernorrland och Västragötaland som har fler områden i riskklass 1. Endast Gotland har färre områden i riskklass 4.
+I Uppsala län så finns det 71 områden i riskklass 1 och 319 i riskklass 2, jämförs länet mot resterande län så är det endast Skåne, Stockholm, Västernorrland och Västra götaland som har fler områden i riskklass 1. Endast Gotland har färre områden i riskklass 4.

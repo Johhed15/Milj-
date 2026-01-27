@@ -15,7 +15,7 @@
   source("Script/load_save_data.R")
   source("Script/create_save_plots.R")
   source("Script/skrapare.R")
-  rus_reader() # Ställ in rätt län manuellt så den passar den riktiga URL koden
+  rus_reader(year='2025') # Ställ in rätt län manuellt så den passar den riktiga URL koden
   # Samma inställning måste användas i create_tables -> rus_lansstyrelse()
 }
 

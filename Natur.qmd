@@ -7,6 +7,7 @@ reference-section-title: "Källor"
 format: 
   html:
     self-contained: true
+    include-after-body: contact-widget.html # Knapp för kontakt
     language: sv 
     toc: true  # Innehållsförteckning
     toc_float: 
@@ -74,13 +75,30 @@ Data är hämtad från @scb_statistikdatabasen.
 #| label: fig-markanvandning
 #| fig-alt: "Figuren visar en karta över länet där varje kommuns markanvändningsandelar går att se, med fokus på andelen skogsmark."
 karta_skog()
+
+
+px_markanvandning <- read.csv('Data/df_markanvandning.csv')  %>% filter(vart.5.e.år== max(vart.5.e.år))
+
+
+e_jord <- px_markanvandning$andel.total.jordbruksmark[
+  px_markanvandning$region == "Enköping"
+]
+
+a_skog <- px_markanvandning$andel.total.skogsmark[
+  px_markanvandning$region == "Älvkarleby"
+]
+
+h_bygg <- px_markanvandning$andel.bebyggd.och.anlagd.mark[
+  px_markanvandning$region == "Håbo"
+]
+
 ```
 
 ::: source-note
 Källa: SCB
 :::
 
-Enköping har lägst andel skogsmark i länet, men också länets högsta jordbruksmarsandel på 44,8%, Älvkarleby har länets högsta skogsmarksandel på 80,1%. Håbo har den högsta andel bebyggd och anlagd mark på 12%.
+Enköping har lägst andel skogsmark i länet, men också länets högsta jordbruksmarsandel på `r round(e_jord*100,1)` %. Älvkarleby har länets högsta skogsmarksandel på `r round(a_skog*100,1)` %. Håbo har högst andel bebyggd och anlagd mark på `r round(h_bygg*100,1)` %.
 
 ## Produktiv skogsmarksareal
 
@@ -103,7 +121,7 @@ prod_skog()
 
 För deklarerad areal för produktiv skogsmark så har Uppsala kommun störst yta som håller sig stabil under perioden, minst yta i länet har Håbo. De flesta kommunerna har samma deklarerad areal under perioden och störst förändring ses i Enköping, Heby och Tierp, där all tre har en något ökande areal.
 
-Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så stor yta som den näst högsta kommunen, minst medelyta per bruksenhet hittas i Enköping kommun. Men undersöks istället medianbrukningsenheten så har Älvkarleby lägst värden vilket då tyder på en skev fördelning där någon eller några få ägare har väldigt stor yta i hektar per brukningsenhet. Medianytan har sjunkit något för de flesta kommunerna under perioden, den enda kommunen med ett högre värde 2024 jämfört med 2005 är Håbo.
+Sett till medelbrukningsenhet så sticker Älvkarleby ut med runt dubbelt så stor yta som den näst högsta kommunen, minst medelyta per bruksenhet hittas i Enköping kommun. Men undersöks i stället medianbrukningsenheten så har Älvkarleby lägst värden vilket då tyder på en skev fördelning där någon eller några få ägare har väldigt stor yta i hektar per brukningsenhet. Medianytan har sjunkit något för de flesta kommunerna under perioden, den enda kommunen med ett högre värde 2024 jämfört med 2005 är Håbo.
 
 Antalet brukningsenheter och ägare är som lägst i Älvkarleby och Håbo, och störst i Uppsala kommun och antalet enheter är väldigt jämnt under perioden, men en tydlig ökning syns i Östhammar. Antalet ägare håller sig också väldigt stabilt under perioden, men en nedgång syns i Enköping och en lite uppgång i Östhammar.
 
@@ -121,7 +139,9 @@ Data är hämtat från @skogsstyrelsen.
 kalmark()
 ```
 
-Sett till medianen för sammanhängande kalmarksareal så ligger länet precis över medianen för hela landet. Trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms, Dalarnas län, Gotlands län, Södermanlands län och Västmanlands län, den största medianen hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
+Sett till medianen för sammanhängande kalmarksareal så ligger länet precis över medianen för hela landet. Trenden för för flera av länen, inklusive Uppsala län, är en uppgång av medianen för de senaste åren. Länets värden är väldigt nära Stockholms, Dalarnas län, Gotlands län, Södermanlands län och Västmanlands län.
+
+Den största medianen i landet hittas i Norrbottens och Jämtlands län, medan det minsta i Kronobergs län.
 
 ## Ekologisk brukad åkermark
 
@@ -205,7 +225,7 @@ knitr::include_graphics("Figurer/slatterang.svg")
 </div>
 ```
 
-Heby har sett till total yta slåtteräng en mycket större yta än övriga kommuner i länet, men sett till andelar så är Älvkarleby den kommun som har högst värde. Håbo har den betydligt minsta ytan och andelen slåtteräng i länet och för Knivsta så saknas data och är därav bortplockad från grafen.
+Heby har sett till total yta slåtteräng, en mycket större yta än övriga kommuner i länet, men sett till andelar så är Älvkarleby den kommun som har högst värde. Håbo har den betydligt minsta ytan och andelen slåtteräng i länet och för Knivsta så saknas data och är därav bortplockad från grafen.
 
 # Skyddad natur
 
@@ -217,7 +237,7 @@ Detta avsnitt ger en översikt av hur stor andel av kommunernas areal som är sk
 
 -   Hav: avser vattenytan mellan kustlinjen och territorialgränsen, dividerat med areal inlandsvatten i det geografiska området.
 
-Data hämtat från @kolada som hänvisar vidar vidare till @scb_statistikdatabasen.
+Data hämtat från @kolada som hänvisar vidare till @scb_statistikdatabasen.
 
 ```{r}
 #| fig-cap: ""
@@ -243,7 +263,7 @@ image_read("Mediabank/Kungsangslilja.png") %>%
   image_ggplot(interpolate = TRUE)
 ```
 
-Detta delkapitel visar hur långt invånarna i genomsnitt har till närmaste skyddade naturområde. Måttet används för att belysa tillgången till natur för rekreation och friluftsliv. Indikatorn följer miljömålet God bebyggd miljö, med målet att alla ska ha skyddad natur inom 1 km. Data hämtat från @kolada som hänvisar vidare vidare till @scb_statistikdatabasen.
+Detta delkapitel visar hur långt invånarna i genomsnitt har till närmaste skyddade naturområde. Måttet används för att belysa tillgången till natur för rekreation och friluftsliv. Indikatorn följer miljömålet God bebyggd miljö, med målet att alla ska ha skyddad natur inom 1 km. Data hämtat från @kolada som hänvisar vidare till @scb_statistikdatabasen.
 
 ```{r}
 #| fig-cap: ''
@@ -376,7 +396,6 @@ Region Uppsala har en av de lägsta vattenanvändningarna i Sverige sett till ku
 
 Vid mätningen 2015 så syns det en tydlig nedgång av vattenanvändningen i länet, något som inte syns i alla län, framför allt inte när det gäller övrig användning. Industri är den kategori som har högst vattenanvändning i länet, som vid senaste mätning använde runt dubbelt så mycket vatten som hushållen i länet.
 
-
 ## Grundvattenkvalitet
 
 Detta delkapitel redovisar andelen grundvattenförekomster med god kemisk och kvantitativ status, uttryckt som procent av det totala antalet grundvattenförekomster i respektive kommun. Grundvattenförekomster som sträcker sig över flera kommuner eller län inkluderas i beräkningen för samtliga kommuner eller län som de har koppling till.
@@ -410,7 +429,6 @@ knitr::include_graphics("Figurer/grundvatten_kolada.svg")
 I både Älvkarleby och Håbo så har alla grundvattenförekomster god kemisk och kvantitativ status för alla 3 cykler. I Tierp, Uppsala, Heby, Knivsta och Östhammar så syns det en minskande andel vid mätningarna i cykel 3 (2017 - 2021).
 
 Lägst andel i länet hittas i Östhammar där runt 36 % av alla grundvattenförekomster anses ha god kemisk och kvantitativ status.
-
 
 ## Avgift för vatten och avlopp
 

@@ -15,7 +15,7 @@
   
 }
 
-rus_lansstyrelse <- function(lan = 'uppsala-lan', year= '2024'){
+rus_lansstyrelse <- function(lan = 'uppsala-lan', year= '2025'){
   # Läser in data
   df <- read.csv(paste0('Data/miljomal_',lan,"_",year,'.csv' ))
   
